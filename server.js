@@ -25,7 +25,7 @@ app.use(
   })
 )
 
-// app.use('/api', jwt({ secret: secret, algorithms: ['HS256'] }))
+app.use('/api', jwt({ secret: secret, algorithms: ['HS256'] }))
 
 app.use('/api/issues', require('./routes/issueRouter.js'))
 

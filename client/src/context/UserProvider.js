@@ -23,7 +23,7 @@ export default function UserProvider(props) {
 
   const [userState, setUserState] = useState(initState)
   const [issues, setIssues] = useState([])
-  const [issue, setIssue] = useState(null)
+  const [issue, setIssue] = useState({})
 
   function signup(credentials) {
     axios.post('/auth/signup', credentials)
@@ -86,7 +86,7 @@ export default function UserProvider(props) {
 
   // Get All Issues
   function getAllIssues() {
-    axios.get('/api/issues')
+    userAxios.get('/api/issues')
       .then(res => {
         console.log(res.data)
         setIssues(res.data)

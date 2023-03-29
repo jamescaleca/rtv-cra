@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react'
 import IssueForm from './IssueForm'
 import { UserContext } from '../context/UserProvider'
-import UpvoteIcon from '../icons/arrow-alt-square-up-regular.svg'
-import DownvoteIcon from '../icons/arrow-square-down-regular.svg'
+import UpvoteIcon from '../assets/icons/arrow-alt-square-up-regular.svg'
+import DownvoteIcon from '../assets/icons/arrow-square-down-regular.svg'
 import '../css/styles.css'
 
 function IssuePreview(props) {

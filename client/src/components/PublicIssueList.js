@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
-import UpvoteIcon from '../icons/arrow-alt-square-up-regular.svg'
-import DownvoteIcon from '../icons/arrow-square-down-regular.svg'
+import UpvoteIcon from '../assets/icons/arrow-alt-square-up-regular.svg'
+import DownvoteIcon from '../assets/icons/arrow-square-down-regular.svg'
+import Patrick from '../assets/images/patrick.jpeg'
 import '../css/styles.css'
 
 export default function IssueList(props) {
@@ -42,17 +43,22 @@ export default function IssueList(props) {
       </li>
     )
 
-  // console.log(issues)
-
   return (
     <>
       <div id='public-issues-title'>
         <h1>All Issues</h1>
       </div>
-      
-      <ul id='issue-list'>
-        { mapIssues }
-      </ul>
+      { issues.length === 0 ? 
+        <div class='nothing-here'>
+          <h1>Oops!</h1>
+          <p>Looks like there's nothing here.</p>
+          <img src={Patrick}></img>
+        </div>
+        :
+        <ul id='issue-list'>
+          { mapIssues }
+        </ul>
+      }
     </>
   )
 }

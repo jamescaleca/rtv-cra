@@ -49,13 +49,13 @@ function IssueCommentsPage(props) {
   //   </>
   // ))
 
-  const mapComments = issue.comments.map(comment => (
-    <>
+  let mapComments = issue.comments.map(comment => (
+    <ul>
       <li>
         <p>{comment.comment}</p>
         <p>{comment.user}</p>
       </li>
-    </>
+    </ul>
   ))
 
   // function handleChange(e) {
@@ -76,18 +76,27 @@ function IssueCommentsPage(props) {
 
   // const { comment } = inputs
 
-  // console.log(currentIssue)
+  // console.log(issue.comments.length)
 
   return (
     <div id='issue-comments-page'>
-      {issue ? 
+      {!issue ? 
+        <h1>Loading...</h1> 
+        :
         <div>
           <h1>{issue.title}</h1>
           <p>{issue.description}</p>
           <h3>Posted by <i>{issue.username}</i></h3>
 
           <h3>Comments</h3>
-          <ul>{ mapComments }</ul>
+          <div>
+            { 
+              issue.comments.length === 0 ?
+              <p>No comments on this post yet</p>
+            :
+              {mapComments} 
+            }
+          </div>
 
           <form onSubmit={handleSubmit} id='new-comment-form'>
             <h3>Leave a comment as <i>{user.username}</i></h3>
@@ -105,7 +114,7 @@ function IssueCommentsPage(props) {
             {newCommentsArray}
           </ul> */}
         </div>
-      : <h1>Loading...</h1>
+      
       }
     </div>
   )

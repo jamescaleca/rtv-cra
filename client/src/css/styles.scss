@@ -48,6 +48,14 @@ $font-descr: rgb(206, 206, 206);
       color: $font-title;
       font-size: 3em;
     }
+    .nothing-here {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img {
+        aspect-ratio: initial;
+      }
+    }
     #public-issues-title {
       display: flex;
       margin: .5em;

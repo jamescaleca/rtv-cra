@@ -9,6 +9,7 @@ import IssueList from './components/IssueList'
 import IssueCommentsPage from './components/IssueCommentsPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import { UserContext } from './context/UserProvider'
+import './css/styles.css'
 
 function App() {
   const { token, user } = useContext(UserContext)
