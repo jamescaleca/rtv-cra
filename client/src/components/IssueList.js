@@ -13,9 +13,6 @@ export default function IssueList(props) {
           <Link 
             to={`/api/issues/${issue._id}`}
           >
-            <div className='profile-issues-title'>
-              <h1>issue goes here</h1>
-            </div>
           </Link>
 
           <IssuePreview 
