@@ -8,11 +8,10 @@ import './css/styles.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   // <UserProvider>
   <React.StrictMode>
-    <Router>
-      <UserProvider>
+    <UserProvider>
         <App />
-      </UserProvider>
-    </Router>
+    </UserProvider>
+
   </React.StrictMode>
   // </UserProvider>
 )
