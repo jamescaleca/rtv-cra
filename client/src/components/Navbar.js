@@ -24,7 +24,7 @@ export default function Navbar() {
           </NavLink>
           
           <NavLink 
-            to='/'
+            to='/issues'
             style={({isActive}) => isActive ? activeStyle : null}
           >
             Public

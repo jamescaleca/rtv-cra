@@ -20,12 +20,15 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route 
-              path='/' 
-              element={<Public />} 
+              path='/auth'
+              element={token ? <Navigate to='/issues' /> : <Auth />}
             />
             <Route 
-              path='/auth'
-              element={token ? <Navigate to='/' /> : <Auth />}
+              path='/issues' 
+              element={<ProtectedRoute token={token}>
+                  <Public />
+                </ProtectedRoute>
+              } 
             />
             <Route 
               path='/profile'
@@ -40,7 +43,7 @@ function App() {
                 </ProtectedRoute>}
             />
             <Route 
-              path='/api/issues/:issueId'
+              path='/issues/:issueId'
               element={<IssueCommentsPage />}
             />
           </Route>

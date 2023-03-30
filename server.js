@@ -25,9 +25,13 @@ app.use(
   })
 )
 
-app.use('/api', jwt({ secret: secret, algorithms: ['HS256'] }))
+app.use(
+  '/issues', 
+  jwt({ secret: secret, algorithms: ['HS256'] }), 
+  require('./routes/issueRouter.js')
+)
 
-app.use('/api/issues', require('./routes/issueRouter.js'))
+// app.use('/api/issues', require('./routes/issueRouter.js'))
 
 app.use((err, req, res, next) => {
   console.log(err)

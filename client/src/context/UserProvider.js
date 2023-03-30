@@ -86,7 +86,7 @@ export default function UserProvider(props) {
 
   // Get All Issues
   function getAllIssues() {
-    userAxios.get('/api/issues')
+    userAxios.get('/issues')
       .then(res => {
         console.log(res.data)
         setPublicIssues(res.data)
@@ -96,7 +96,7 @@ export default function UserProvider(props) {
 
   // GET USER ISSUES
   function getUserIssues() {
-    userAxios.get('/api/issues/user')
+    userAxios.get('/issues/user')
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: res.data
@@ -106,7 +106,7 @@ export default function UserProvider(props) {
 
   // GET ALL COMMENTS
   function getAllComments(issueId) {
-    userAxios.get(`/api/issues/${issueId}/comments`)
+    userAxios.get(`/issues/${issueId}/comments`)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 
@@ -120,7 +120,7 @@ export default function UserProvider(props) {
 
   // ADD AN ISSUE
   function addIssue(newIssue) {
-    userAxios.post('/api/issues', newIssue)
+    userAxios.post('/issues', newIssue)
       .then(res => {
         setUserState(prevState => ({
           ...prevState,
@@ -132,14 +132,14 @@ export default function UserProvider(props) {
 
   //GET ISSUE BY ID
   function getIssueById(issueId) {
-    userAxios.get(`/api/issues/${issueId}`)
+    userAxios.get(`/issues/${issueId}`)
       .then(res => setIssue(res.data))
       .catch(err => console.log(err.response.data.errMsg))
   }
 
   // ADD A COMMENT
   function addComment(newComment, issueId) {
-    userAxios.post(`/api/issues/${issueId}/comments`, newComment)
+    userAxios.post(`/issues/${issueId}/comments`, newComment)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 
@@ -154,7 +154,7 @@ export default function UserProvider(props) {
 
   //EDIT ISSUE
   function editIssue(updates, issueId) {
-    userAxios.put(`/api/issues/${issueId}`, updates)
+    userAxios.put(`/issues/${issueId}`, updates)
       .then(res => 
         setUserState(prevState => ({
         ...prevState,
@@ -167,7 +167,7 @@ export default function UserProvider(props) {
 
   //UPVOTE ISSUE
   function upvoteIssue(issueId) {
-    userAxios.put(`/api/issues/upvote/${issueId}`)
+    userAxios.put(`/issues/upvote/${issueId}`)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 
@@ -185,7 +185,7 @@ export default function UserProvider(props) {
 
   //DOWNVOTE ISSUE
   function downvoteIssue(issueId) {
-    userAxios.put(`/api/issues/downvote/${issueId}`)
+    userAxios.put(`/issues/downvote/${issueId}`)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 
@@ -203,7 +203,7 @@ export default function UserProvider(props) {
 
   //DELETE ISSUE
   function deleteIssue(issueId) {
-    userAxios.delete(`/api/issues/${issueId}`)
+    userAxios.delete(`/issues/${issueId}`)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.filter(issue => issue._id !== issueId)

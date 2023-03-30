@@ -11,7 +11,7 @@ export default function IssueList(props) {
       { issues.map((issue) => 
         <li className='profile-issue-li' key={issue._id}>
           <Link 
-            to={`/api/issues/${issue._id}`}
+            to={`/issues/${issue._id}`}
           >
           </Link>
 

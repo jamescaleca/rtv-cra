@@ -19,7 +19,7 @@ export default function IssueList(props) {
     .sort((a, b) => b.votesTotal - a.votesTotal)
     .map((issue) => 
       <li key={issue._id} className='issue-li'>
-        <Link to={`/api/issues/${issue._id}`}>
+        <Link to={`/issues/${issue._id}`}>
           <h1>{issue.title}</h1>
           <p>{issue.description}</p>
           {/* <h3>Upvotes: {issue.upvotes.length}</h3>

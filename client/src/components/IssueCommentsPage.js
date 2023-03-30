@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../context/UserProvider'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import '../css/styles.css'
 
 function IssueCommentsPage(props) {
@@ -17,7 +17,7 @@ function IssueCommentsPage(props) {
   console.log(issue)
 
   function addComment(newComment, issueId) {
-    userAxios.post(`/api/issues/${issueId}/comments`, newComment)
+    userAxios.post(`/issues/${issueId}/comments`, newComment)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 
@@ -86,6 +86,13 @@ function IssueCommentsPage(props) {
         <h1>Loading...</h1> 
         :
         <div>
+          <Link
+            to=".."
+            relative="path"
+            className="back-button"
+          >
+            &larr; <span>Back to all issues</span>
+          </Link>
           <h1>{issue.title}</h1>
           <p>{issue.description}</p>
           <h3>Posted by <i>{issue.username}</i></h3>
