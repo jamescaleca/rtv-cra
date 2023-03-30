@@ -5,7 +5,7 @@ import Profile from './pages/Profile'
 import Public from './pages/Public'
 import Post from './pages/Post'
 import IssueList from './components/IssueList'
-import IssueCommentsPage from './components/IssueCommentsPage'
+import IssueDetailPage from './pages/IssueDetailPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
 import { UserContext } from './context/UserProvider'
@@ -44,7 +44,10 @@ function App() {
             />
             <Route 
               path='/issues/:issueId'
-              element={<IssueCommentsPage />}
+              element={<ProtectedRoute token={token} redirectTo='/'>
+                  <IssueDetailPage />
+                </ProtectedRoute>
+              }
             />
           </Route>
         </Routes>

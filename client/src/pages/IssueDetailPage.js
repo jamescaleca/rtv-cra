@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { UserContext } from '../context/UserProvider'
 import { useParams, Link } from 'react-router-dom'
+import Comments from '../components/Comments'
 import '../css/styles.css'
 
 function IssueCommentsPage(props) {
@@ -96,6 +97,8 @@ function IssueCommentsPage(props) {
           <h1>{issue.title}</h1>
           <p>{issue.description}</p>
           <h3>Posted by <i>{issue.username}</i></h3>
+
+          <Comments />
 
           {/* <h3>Comments</h3>
           <div>
