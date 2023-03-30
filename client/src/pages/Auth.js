@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import AuthForm from './AuthForm'
+import AuthForm from '../components/AuthForm'
 import { UserContext } from '../context/UserProvider'
 import '../css/styles.css'
 
@@ -9,7 +9,7 @@ export default function Auth() {
   const [inputs, setInputs] = useState(initInputs)
   const [toggle, setToggle] = useState(false)
 
-  const { signup, login, errMsg, resetAuthErr } = useContext(UserContext)
+  const { signup, login, errMsg, resetAuthErr, getUserIssues } = useContext(UserContext)
 
   function handleChange(e) {
     const {name, value} = e.target
@@ -22,18 +22,19 @@ export default function Auth() {
   function handleSignup(e){
     e.preventDefault()
     signup(inputs)
+    getUserIssues()
   }
 
   function handleLogin(e){
     e.preventDefault()
     login(inputs)
+    getUserIssues()
   }
 
   function toggleForm() {
     setToggle(prev => !prev)
     resetAuthErr()
   }
-  console.log(inputs)
 
   return (
     <div className='auth-container'>

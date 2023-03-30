@@ -11,6 +11,7 @@ function IssueCommentsPage(props) {
 
   useEffect(() => {
     getIssueById(params.issueId)
+    getAllComments(params.issueId)
   }, [params.issueId])
 
   console.log(issue)
@@ -20,14 +21,15 @@ function IssueCommentsPage(props) {
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 
-            issueId === issue._id ? 
-            {...issue, comments: [...issue.comments, newComment]} : 
-            issue
+          issueId === issue._id ? 
+          {...issue, comments: [...issue.comments, newComment]} : 
+          issue
         )
       })))
       .catch(err => console.log(err.response.data.errMsg))
     return getAllComments(issueId)
   }
+
 
   // const initInputs = {
   //   comment: '',
@@ -49,14 +51,14 @@ function IssueCommentsPage(props) {
   //   </>
   // ))
 
-  let mapComments = issue.comments.map(comment => (
-    <ul>
-      <li>
-        <p>{comment.comment}</p>
-        <p>{comment.user}</p>
-      </li>
-    </ul>
-  ))
+  // const mapComments = issue.comments.map(comment => (
+  //   <ul>
+  //     <li>
+  //       <p>{comment.comment}</p>
+  //       <p>{comment.user}</p>
+  //     </li>
+  //   </ul>
+  // ))
 
   // function handleChange(e) {
   //   const {name, value} = e.target
@@ -88,15 +90,15 @@ function IssueCommentsPage(props) {
           <p>{issue.description}</p>
           <h3>Posted by <i>{issue.username}</i></h3>
 
-          <h3>Comments</h3>
+          {/* <h3>Comments</h3>
           <div>
             { 
-              issue.comments.length === 0 ?
+              issue.comments.length === 0 || issue.comments === undefined ?
               <p>No comments on this post yet</p>
             :
               {mapComments} 
             }
-          </div>
+          </div> */}
 
           <form onSubmit={handleSubmit} id='new-comment-form'>
             <h3>Leave a comment as <i>{user.username}</i></h3>

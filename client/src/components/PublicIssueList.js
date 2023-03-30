@@ -8,14 +8,14 @@ import '../css/styles.css'
 
 export default function IssueList(props) {
   // const { issues, username } = props
-  const { upvoteIssue, downvoteIssue, getAllIssues, issues, user } = useContext(UserContext)
+  const { upvoteIssue, downvoteIssue, getAllIssues, publicIssues, user } = useContext(UserContext)
   // const [votesTotal, setVotesTotal] = useState(0)
 
   useEffect(() => {
     getAllIssues()
   }, [])
 
-  const mapIssues = [].concat(issues)
+  const mapIssues = [].concat(publicIssues)
     .sort((a, b) => b.votesTotal - a.votesTotal)
     .map((issue) => 
       <li key={issue._id} className='issue-li'>
@@ -48,8 +48,8 @@ export default function IssueList(props) {
       <div id='public-issues-title'>
         <h1>All Issues</h1>
       </div>
-      { issues.length === 0 ? 
-        <div class='nothing-here'>
+      { publicIssues.length === 0 ? 
+        <div className='nothing-here'>
           <h1>Oops!</h1>
           <p>Looks like there's nothing here.</p>
           <img src={Patrick}></img>

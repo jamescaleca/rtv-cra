@@ -22,8 +22,8 @@ export default function UserProvider(props) {
   }
 
   const [userState, setUserState] = useState(initState)
-  const [issues, setIssues] = useState([])
-  const [issue, setIssue] = useState({})
+  const [publicIssues, setPublicIssues] = useState([])
+  const [issue, setIssue] = useState(null)
 
   function signup(credentials) {
     axios.post('/auth/signup', credentials)
@@ -89,7 +89,7 @@ export default function UserProvider(props) {
     userAxios.get('/api/issues')
       .then(res => {
         console.log(res.data)
-        setIssues(res.data)
+        setPublicIssues(res.data)
       })
       .catch(err => console.log(err.res.data.errMsg))
   }
@@ -143,9 +143,9 @@ export default function UserProvider(props) {
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 
-            issueId === issue._id ? 
-            {...issue, comments: [...issue.comments, newComment]} : 
-            issue
+          issueId === issue._id ? 
+          {...issue, comments: [...issue.comments, newComment]} : 
+          issue
         )
       })))
       .catch(err => console.log(err.response.data.errMsg))
@@ -241,7 +241,7 @@ export default function UserProvider(props) {
         upvoteIssue,
         downvoteIssue,
         issue,
-        issues,
+        publicIssues,
         setIssue,
         userAxios
       }}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import PublicIssueList from './PublicIssueList'
+import PublicIssueList from '../components/PublicIssueList'
 import { UserContext } from '../context/UserProvider'
 import '../css/styles.css'
 

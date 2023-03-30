@@ -1,23 +1,24 @@
 import React, { useContext, useEffect } from 'react'
-import IssueForm from './IssueForm'
-import IssueList from './IssueList'
+import IssueForm from '../components/IssueForm'
+import IssueList from '../components/IssueList'
 import { UserContext } from '../context/UserProvider'
 import '../css/styles.css'
 
 export default function Profile() {
   const {
-    user: 
-      { username },
-      token,
-      issues,
-      getUserIssues,
-      deleteIssue,
-      editIssue
+    issues,
+    user: { username },
+    token,
+    getUserIssues,
+    deleteIssue,
+    editIssue
   } = useContext(UserContext)
 
   useEffect(() => {
     getUserIssues()
-  }, [issues])
+  }, [])
+
+  console.log(issues)
   
   return (
     <div className='profile'>

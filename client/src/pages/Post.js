@@ -1,5 +1,5 @@
 import React from 'react'
-import IssueForm from './IssueForm'
+import IssueForm from '../components/IssueForm'
 
 export default function Post() {
 
@@ -9,5 +9,4 @@ export default function Post() {
       <IssueForm />
     </>
   )
-
 }
