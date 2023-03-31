@@ -36,11 +36,7 @@ const issueSchema = new Schema({
   username: {
     type: String,
     required: true
-  },
-  comments: [{
-    type: Schema.Types.Object,
-    ref: 'Comment'
-  }]
+  }
 })
 
 module.exports = mongoose.model("Issue", issueSchema)

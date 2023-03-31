@@ -33,6 +33,12 @@ app.use(
 
 // app.use('/api/issues', require('./routes/issueRouter.js'))
 
+app.use(
+  '/comments',
+  jwt({ secret: secret, algorithms: ['HS256']}),
+  require('./routes/commentRouter.js')
+)
+
 app.use((err, req, res, next) => {
   console.log(err)
   if(err.name === 'UnauthorizedError'){
