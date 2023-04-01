@@ -1,6 +1,5 @@
 const express = require('express')
 const commentRouter = express.Router()
-const Issue = require('../models/issue.js')
 const Comment = require('../models/comment.js')
 
 commentRouter.route('/:issueId')

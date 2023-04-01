@@ -106,7 +106,7 @@ export default function UserProvider(props) {
 
   // GET ALL COMMENTS
   function getAllComments(issueId) {
-    userAxios.get(`/issues/${issueId}/comments`)
+    userAxios.get(`/comments/${issueId}`)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 

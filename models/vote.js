@@ -4,15 +4,14 @@ const Schema = mongoose.Schema
 const voteSchema = new Schema({
   issueId: {
     type: Schema.Types.ObjectId,
-    ref: 'Issue'
+    ref: 'Issue',
+    required: true
   },
-  votes: [{
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    }
-  }]
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  }
 })
 
 module.exports = mongoose.model('Vote', voteSchema)
