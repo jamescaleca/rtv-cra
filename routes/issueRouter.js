@@ -18,7 +18,7 @@ issueRouter.route('/')
     req.body.user = req.auth._id
     req.body.username = req.auth.username
     const newIssue = new Issue(req.body)
-    console.log(newIssue)
+    console.log(req.body)
     newIssue.save((err, savedIssue) => {
       if(err){
         res.status(500)
