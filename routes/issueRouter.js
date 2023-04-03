@@ -18,7 +18,8 @@ issueRouter.route('/')
     req.body.user = req.auth._id
     req.body.username = req.auth.username
     const newIssue = new Issue(req.body)
-    console.log(req.body)
+    newIssue.upvotes.push({ user: req.user })
+    newIssue.votesTotal = 1
     newIssue.save((err, savedIssue) => {
       if(err){
         res.status(500)
@@ -42,7 +43,7 @@ issueRouter.put('/upvote/:issueId', (req, res, next) => {
     //   return res.status(201).send(issue)
     // }
     if(!exists && !downvoteExist) {
-      issue.upvotes.push({user: req.user})
+      issue.upvotes.push({ user: req.user })
       issue.votesTotal++
     // save the issue
       issue.save(err => {

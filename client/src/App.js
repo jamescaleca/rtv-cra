@@ -20,9 +20,10 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route 
-              path='/auth'
+              path='/'
               element={token ? <Navigate to='/issues' /> : <Auth />}
             />
+            
             <Route 
               path='/issues' 
               element={<ProtectedRoute token={token}>

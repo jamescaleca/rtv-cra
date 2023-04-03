@@ -6,7 +6,7 @@ import '../css/styles.css'
 
 function IssueCommentsPage(props) {
   const params = useParams()
-  const { userAxios, getAllComments, issues, getIssueById, issue, setIssue, user, userState, setUserState } = useContext(UserContext)
+  const { userAxios, getAllComments, issues, getIssueById, issue, setIssue, user, userState, setUserState, comments, setComments } = useContext(UserContext)
   
   // const { title, description, _id, user, username } = props.location.state
 
@@ -15,7 +15,7 @@ function IssueCommentsPage(props) {
     getAllComments(params.issueId)
   }, [params.issueId])
 
-  console.log(issue)
+  console.log(comments)
 
   function addComment(newComment, issueId) {
     userAxios.post(`/issues/${issueId}/comments`, newComment)
@@ -98,7 +98,9 @@ function IssueCommentsPage(props) {
           <p>{issue.description}</p>
           <h3>Posted by <i>{issue.username}</i></h3>
 
-          <Comments />
+          <Comments 
+            comments={comments}
+          />
 
           {/* <h3>Comments</h3>
           <div>
@@ -111,7 +113,7 @@ function IssueCommentsPage(props) {
           </div> */}
 
           <form onSubmit={handleSubmit} id='new-comment-form'>
-            <h3>Leave a comment as <i>{user.username}</i></h3>
+            {/* <h3>Leave a comment as <i>{user.username}</i></h3> */}
             {/* <input
               type='text'
               name='comment'
