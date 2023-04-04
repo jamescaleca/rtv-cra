@@ -26,27 +26,29 @@ function App() {
             
             <Route 
               path='/issues' 
-              element={<ProtectedRoute token={token}>
+              element={<ProtectedRoute token={token} redirectTo='/'>
                   <Public />
                 </ProtectedRoute>
               } 
             />
             <Route 
+              path='/issues/:issueId'
+              element={<ProtectedRoute token={token} redirectTo='/'>
+                  <IssueDetailPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route 
               path='/profile'
               element={<ProtectedRoute token={token} redirectTo='/'>
                   <Profile />
-                </ProtectedRoute>}
+                </ProtectedRoute>
+              }
             />
             <Route 
               path='/post'
               element={<ProtectedRoute token={token} redirectTo='/'>
                   <Post />
-                </ProtectedRoute>}
-            />
-            <Route 
-              path='/issues/:issueId'
-              element={<ProtectedRoute token={token} redirectTo='/'>
-                  <IssueDetailPage />
                 </ProtectedRoute>
               }
             />
