@@ -6,6 +6,7 @@ import Public from './pages/Public'
 import Post from './pages/Post'
 import IssueList from './components/IssueList'
 import IssueDetailPage from './pages/IssueDetailPage'
+import NotFound from './pages/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
 import { UserContext } from './context/UserProvider'
@@ -51,6 +52,10 @@ function App() {
                   <Post />
                 </ProtectedRoute>
               }
+            />
+            <Route 
+              path='*'
+              element={<NotFound />}
             />
           </Route>
         </Routes>
