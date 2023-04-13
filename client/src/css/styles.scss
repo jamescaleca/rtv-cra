@@ -13,8 +13,11 @@ $font-descr: rgb(206, 206, 206);
   font-family: sans-serif;
   outline: none;
   text-decoration: none;
+  
 }
-
+body {
+  background: $canvas;
+}
 .app {
   display: flex;
   flex-direction: column;
@@ -37,6 +40,54 @@ $font-descr: rgb(206, 206, 206);
       background-color: $element;
       color: firebrick;
       padding: 3px 8px;
+    }
+  }
+  .post-page{
+    display: flex;
+    justify-content: center;
+    .post-container {
+      margin: 50px 25px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      
+      h1 {
+        font-size: 22px;
+        text-align: center;
+      }
+      .new-post-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input[type=text] {
+          padding: 10px;
+          margin: 10px 0;
+          background: $element;
+          color: $font-descr;
+          width: 100%;
+        }
+        textarea {
+          padding: 10px;
+          margin: 10px 0;
+          background: $element;
+          color: $font-descr;
+          width: 100%;
+        }
+        hr {
+          width: 100%;
+          margin: 20px;
+          border: 0;
+          height: 1px;
+          background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+        }
+        button {
+          background: $font-title;
+          color: $element;
+          padding: 10px;
+          border-radius: 20px;
+          width: 90px;
+        }
+      }
     }
   }
   .public {

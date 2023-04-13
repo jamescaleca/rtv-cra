@@ -33,22 +33,25 @@ export default function IssueForm(props) {
 
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="new-post-form" onSubmit={handleSubmit}>
       <input 
         type='text'
         name='title'
         value={title}
         onChange={handleChange}
         placeholder='Title'
+        required
       />
-      <input 
-        type='text'
+      <textarea 
         name='description'
         value={description}
         onChange={handleChange}
         placeholder='Description'
+        rows={14}
+        required
       />
-      <button>Submit Issue</button>
+      <hr></hr>
+      <button>Post</button>
     </form>
   )
 }

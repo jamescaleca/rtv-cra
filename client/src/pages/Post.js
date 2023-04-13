@@ -4,9 +4,11 @@ import IssueForm from '../components/IssueForm'
 export default function Post() {
 
   return(
-    <>
-      <h1>hi</h1>
-      <IssueForm />
-    </>
+    <div className="post-page">
+      <div className="post-container">
+        <h1>Create a post</h1>
+        <IssueForm />
+      </div>
+    </div>
   )
 }

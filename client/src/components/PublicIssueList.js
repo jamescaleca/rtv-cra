@@ -15,13 +15,20 @@ export default function IssueList(props) {
     getAllIssues()
   }, [])
 
+  
+
   const mapIssues = [].concat(publicIssues)
     .sort((a, b) => b.votesTotal - a.votesTotal)
     .map((issue) => 
       <li key={issue._id} className='issue-li'>
         <Link to={issue._id}>
           <h1>{issue.title}</h1>
-          <p>{issue.description}</p>
+          <p>
+            {issue.description.length > 60 ?
+              `${issue.description.slice(0, 60)}...` :
+              issue.description
+            }
+          </p>
           {/* <h3>Upvotes: {issue.upvotes.length}</h3>
           <h3>Downvotes: {issue.downvotes.length}</h3> */}
           <h3>Total votes: <span>{issue.votesTotal}</span></h3>
