@@ -117,15 +117,20 @@ body {
           font-size: 2em;
           margin-bottom: .3em;
         }
+        p {
+          font-size: .9rem;
+        }
       }
       .votes {
         display: flex;
         flex-direction: row;
+        margin: .5rem 0;
         img {
           width: 1.2rem;
         }
         h3 {
           margin: 0 1rem;
+          color: $font-title;
         }
         .upvote {
           filter: 
@@ -135,7 +140,6 @@ body {
             hue-rotate(1deg) 
             brightness(104%) 
             contrast(102%);
-          margin-left: .2rem;
         }
         .downvote {
           filter: 
@@ -215,11 +219,22 @@ body {
         margin-right: 5px;
       }
       .upvote {
-        filter: invert(65%) sepia(9%) saturate(6603%) hue-rotate(1deg) brightness(104%) contrast(102%);
-        margin-left: 5px;
+        filter: 
+          invert(65%) 
+          sepia(9%) 
+          saturate(6603%) 
+          hue-rotate(1deg) 
+          brightness(104%) 
+          contrast(102%);
       }
       .downvote {
-        filter: invert(57%) sepia(38%) saturate(1421%) hue-rotate(192deg) brightness(97%) contrast(91%);
+        filter: 
+          invert(57%) 
+          sepia(38%) 
+          saturate(1421%) 
+          hue-rotate(192deg) 
+          brightness(97%) 
+          contrast(91%);
       }
     }
   }
@@ -273,28 +288,5 @@ body {
       padding: 8px;
       border-radius: 4px;
     }
-  }
-}
-
-.issue-li {
-  a {
-    h3 {
-      color: $font-title;
-      span {
-        color: orange;
-      }
-    }
-  }
-  img {
-    width: 20px;
-    height: auto;
-    margin-right: 5px;
-  }
-  #upvote {
-    filter: invert(65%) sepia(9%) saturate(6603%) hue-rotate(1deg) brightness(104%) contrast(102%);
-    margin-left: 5px;
-  }
-  #downvote {
-    filter: invert(57%) sepia(38%) saturate(1421%) hue-rotate(192deg) brightness(97%) contrast(91%);
   }
 }

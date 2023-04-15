@@ -23,7 +23,7 @@ export default function IssueList(props) {
       <li key={issue._id} className='issue-li'>
         <Link className="issue-link" to={issue._id}>
           <h3>{issue.title}</h3>
-          <h4>Username: {issue.username}</h4>
+          <p>Username: {issue.username}</p>
           <p>
             {issue.description.length > 60 ?
               `${issue.description.slice(0, 60)}...` :
