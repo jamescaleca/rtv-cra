@@ -1,9 +1,12 @@
 import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
+import NavItem from "./NavItem"
+import DropdownMenu from "./DropdownMenu"
+import { ReactComponent as CaretIcon } from "../assets/icons/caret.svg"
 import '../css/styles.css'
 
-export default function Navbar() {
+export default function Navbar(props) {
   const { logout, user: { username }, token } = useContext(UserContext)
 
   const activeStyle = {
@@ -15,49 +18,27 @@ export default function Navbar() {
   return (
     <>
       {token ? 
-        <div className='navbar'>
-          <NavLink 
-            to='/profile'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Profile
-          </NavLink>
-          
-          <NavLink 
-            to='/issues'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Public
-          </NavLink>
-          
-          <NavLink 
-            to='/post'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-             + 
-          </NavLink>
-          
-          <div>
-            <p>Logged in as: <b>{username}</b></p>
-            <button onClick={logout}>Logout</button>
-          </div>
-        </div> 
+        <nav className='navbar'>
+          <ul className="navbar-nav">{props.children}</ul>
+        </nav> 
       :
-        <div className='navbar'>
-          <NavLink 
-            to='/'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Public
-          </NavLink>
-          
-          <NavLink 
-            to='/auth'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Login
-          </NavLink>
-        </div>
+        <nav className='navbar'>
+          <ul className="navbar-nav">
+            <NavLink 
+              to='/'
+              style={({isActive}) => isActive ? activeStyle : null}
+            >
+              Public
+            </NavLink>
+            
+            <NavLink 
+              to='/auth'
+              style={({isActive}) => isActive ? activeStyle : null}
+            >
+              Login
+            </NavLink>
+          </ul>
+        </nav>
       }
     </>
   )
