@@ -6,7 +6,7 @@ export default function Post() {
   return(
     <div className="post-page">
       <div className="post-container">
-        <h1>Create a post</h1>
+        <h2>Create a post</h2>
         <IssueForm />
       </div>
     </div>

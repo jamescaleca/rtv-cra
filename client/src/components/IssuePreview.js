@@ -16,7 +16,7 @@ function IssuePreview(props) {
 
   return (
     <>
-    <h1>{title}</h1>
+      <h1>{title}</h1>
       <h2>
         {description.length > 60 ? 
           `${firstFewDesc}...`

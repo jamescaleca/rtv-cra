@@ -37,6 +37,12 @@ code {
     monospace;
 }
 
+h2 {
+  color: $font-title;
+  font-size: 2.2em;
+  padding-bottom: .7rem;
+}
+
 ul {
   list-style: none;
   margin: 0;
@@ -153,17 +159,14 @@ a {
   display: flex;
   justify-content: center;
   .post-container {
-    margin: 50px 25px;
+    align-items: center;
     display: flex;
     flex-direction: column;
     width: 100%;
-    
-    h1 {
-      font-size: 22px;
-      text-align: center;
-    }
     .new-post-form {
       display: flex;
+      width: 100%;
+      padding: 0 20px;
       flex-direction: column;
       align-items: center;
       input[type=text] {
@@ -197,72 +200,29 @@ a {
         color: $element;
         padding: 10px;
         border-radius: 20px;
+        font-size: 1rem;
+        font-weight: bold;
         width: 90px;
       }
     }
   }
 }
+.issue-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .public {
   display: flex;
   flex-direction: column;
-  h1 {
-    color: $font-title;
-    font-size: 3em;
-  }
+  align-items: center;
+
   .nothing-here {
     display: flex;
     flex-direction: column;
     align-items: center;
     img {
       aspect-ratio: initial;
-    }
-  }
-  #issue-list {
-    display: flex;
-    flex-direction: column;
-    .issue-li {
-      padding: .5rem;
-      .issue-link {
-        text-decoration: none;
-        color: $font-descr;
-        h1 {
-          font-size: 2em;
-          margin-bottom: .3em;
-        }
-        p {
-          font-size: .9rem;
-        }
-      }
-      .votes {
-        display: flex;
-        flex-direction: row;
-        margin: .5rem 0;
-        img {
-          width: 1.2rem;
-        }
-        h3 {
-          margin: 0 1rem;
-          color: $font-title;
-        }
-        .upvote {
-          filter: 
-            invert(65%) 
-            sepia(9%) 
-            saturate(6603%) 
-            hue-rotate(1deg) 
-            brightness(104%) 
-            contrast(102%);
-        }
-        .downvote {
-          filter: 
-            invert(57%) 
-            sepia(38%) 
-            saturate(1421%) 
-            hue-rotate(192deg) 
-            brightness(97%) 
-            contrast(91%);
-        }
-      }
     }
   }
   #new-comment-form {
@@ -277,18 +237,73 @@ a {
     }
   }
 }
+.issue-li {
+  padding: 0 0 .5rem .5rem;
+  hr {
+    width: 100%;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right, 
+      rgba(255, 255, 255, 0), 
+      rgba(255, 255, 255, 0.75), 
+      rgba(255, 255, 255, 0)
+    );
+  }
+  .issue-link {
+    text-decoration: none;
+    color: $font-descr;
+    h1 {
+      font-size: 2em;
+      margin-bottom: .3em;
+    }
+    p {
+      font-size: .8rem;
+    }
+    .issue-title {
+      font-size: 1.4rem;
+      padding: .3rem 0;
+    }
+  }
+  .votes {
+    display: flex;
+    flex-direction: row;
+    margin: .5rem 0;
+    img {
+      width: 1.2rem;
+    }
+    h3 {
+      margin: 0 1rem;
+      color: $font-title;
+    }
+    .upvote {
+      filter: 
+        invert(65%) 
+        sepia(9%) 
+        saturate(6603%) 
+        hue-rotate(1deg) 
+        brightness(104%) 
+        contrast(102%);
+    }
+    .downvote {
+      filter: 
+        invert(57%) 
+        sepia(38%) 
+        saturate(1421%) 
+        hue-rotate(192deg) 
+        brightness(97%) 
+        contrast(91%);
+    }
+  }
+}
 .profile {
   display: flex;
   flex-direction: column;
-  // height: 100vh;
   background: inherit;
+  align-items: center;
   h1 {
     color: $font-title;
     font-size: 3em;
-  }
-  h3 {
-    margin: 16px 0;
-    justify-content: center;
   }
   #profile-page-title {
     display: flex;
@@ -317,12 +332,6 @@ a {
         }
         p {
           color: $font-descr;
-        }
-        h3 {
-          color: $font-title;
-          span {
-              color: orange;
-          }
         }
       }
       img {
@@ -365,11 +374,6 @@ a {
     }
   }
 }
-
-
-
-
-
 .auth-container {
   display: flex;
   align-items: center;
