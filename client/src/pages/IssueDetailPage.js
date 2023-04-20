@@ -6,7 +6,18 @@ import '../css/styles.css'
 
 function IssueCommentsPage(props) {
   const params = useParams()
-  const { userAxios, getAllComments, issues, getIssueById, issue, setIssue, user, userState, setUserState, comments, setComments } = useContext(UserContext)
+  const { userAxios, 
+    getAllComments, 
+    issues, 
+    getIssueById, 
+    issue, 
+    setIssue, 
+    user, 
+    userState, 
+    setUserState, 
+    comments, 
+    setComments 
+  } = useContext(UserContext)
   
   // const { title, description, _id, user, username } = props.location.state
 
