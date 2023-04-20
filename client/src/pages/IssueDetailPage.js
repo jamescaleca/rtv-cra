@@ -1,16 +1,33 @@
 import React, { useContext, useEffect } from 'react'
+import { useLoaderData } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
 import { useParams, Link } from 'react-router-dom'
 import Comments from '../components/Comments'
 import '../css/styles.css'
 
-function IssueCommentsPage(props) {
-  const params = useParams()
+export function loader({ params }) {
+  console.log(params)
+  async function getIssueById(id) {
+    const url = `/issues/${id}`
+    const res = await fetch(url)
+    if (!res.ok) {
+      throw {
+        message: "Failed to fetch issue",
+        statusText: res.statusText,
+        status: res.status
+      }
+    }
+    const data = await res.json()
+    return data
+  }
+  return getIssueById(params.issueId)
+}
+
+function IssueCommentsPage() {
   const { userAxios, 
     getAllComments, 
     issues, 
     getIssueById, 
-    issue, 
     setIssue, 
     user, 
     userState, 
@@ -18,15 +35,16 @@ function IssueCommentsPage(props) {
     comments, 
     setComments 
   } = useContext(UserContext)
+
+  const issue = useLoaderData()
   
   // const { title, description, _id, user, username } = props.location.state
 
-  useEffect(() => {
-    getIssueById(params.issueId)
-    getAllComments(params.issueId)
-  }, [params.issueId])
+  // useEffect(() => {
+  //   getIssueById(params.issueId)
+  //   getAllComments(params.issueId)
+  // }, [params.issueId])
 
-  console.log(comments)
 
   function addComment(newComment, issueId) {
     userAxios.post(`/issues/${issueId}/comments`, newComment)
@@ -99,7 +117,7 @@ function IssueCommentsPage(props) {
         :
         <div>
           <Link
-            to=".."
+            to="../.."
             relative="path"
             className="back-button"
           >

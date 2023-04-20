@@ -26,7 +26,7 @@ export default function NavLinks() {
           </li>
           <li className="nav-link">
             <NavLink 
-              to='/issues'
+              to='/'
               style={({isActive}) => isActive ? activeStyle : null}
             >
               Public
@@ -51,7 +51,7 @@ export default function NavLinks() {
           </NavLink>
           
           <NavLink 
-            to='/auth'
+            to='/login'
             style={({isActive}) => isActive ? activeStyle : null}
           >
             Login

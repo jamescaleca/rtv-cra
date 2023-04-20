@@ -28,9 +28,9 @@ export default function Profile() {
       <IssueForm /> */}
 
       <h2>😎 Your Issues 😎</h2>
-      <IssueMap 
+      {/* <IssueMap 
         issues={issues}
-      />
+      /> */}
       {/* <IssueList 
         issues={issues}
         deleteIssue={deleteIssue}

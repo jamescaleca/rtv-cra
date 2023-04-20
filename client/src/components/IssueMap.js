@@ -12,7 +12,7 @@ export default function IssueMap(props) {
     .sort((a, b) => b.votesTotal - a.votesTotal)
     .map((issue) => 
       <li key={issue._id} className='issue-li'>
-        <Link className="issue-link" to={issue._id}>
+        <Link className="issue-link" to={`/issues/${issue._id}`}>
           <p>Posted by {issue.username}</p>
           <h3 className="issue-title">{issue.title}</h3>
           <p>

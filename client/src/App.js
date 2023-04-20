@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { 
   RouterProvider, 
   createBrowserRouter, 
@@ -6,34 +6,39 @@ import {
   Route, 
   Navigate 
 } from 'react-router-dom'
-import Auth from './pages/Auth'
+import Login, { loader as loginLoader } from './pages/Login'
 import Profile from './pages/Profile'
-import Public from './pages/Public'
+import Public, { loader as issuesLoader } from './pages/Public'
 import Post from './pages/Post'
 import IssueList from './components/IssueList'
-import IssueDetailPage from './pages/IssueDetailPage'
+import IssueDetailPage, { loader as issueDetailPageLoader} from './pages/IssueDetailPage'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
 import { UserContext } from './context/UserProvider'
 import './css/styles.css'
 
+
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route element={<Layout />}>
+  <Route path="/" element={<Layout />}>
     <Route 
-      path='/'
-      element={<Auth />}
+      index
+      element={<Public />}
+      loader={issuesLoader}
     />
     <Route 
-      path='/issues' 
-      element={<Public />} 
+      path='/login'
+      element={<Login />}
+      loader={loginLoader}
     />
     <Route 
       path='/issues/:issueId'
       element={<IssueDetailPage />}
+      loader={issueDetailPageLoader}
     />
     <Route 
       path='/profile'
       element={<Profile />}
+      
     />
     <Route 
       path='/post'

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Auth from './pages/Auth'
+import Auth from './pages/Login'
 import Profile from './pages/Profile'
 import Public from './pages/Public'
 import Post from './pages/Post'
