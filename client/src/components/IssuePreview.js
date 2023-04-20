@@ -12,10 +12,17 @@ function IssuePreview(props) {
 
   function toggle(){setEditToggle(prevToggle => !prevToggle)}
 
+  const firstFewDesc = description.slice(0, 60)
+
   return (
     <>
-    <h1>{title}</h1>
-      <h2>{description}</h2>
+      <h1>{title}</h1>
+      <h2>
+        {description.length > 60 ? 
+          `${firstFewDesc}...`
+          : description
+        }
+      </h2>
       <h3>
         <img 
           className='upvote'

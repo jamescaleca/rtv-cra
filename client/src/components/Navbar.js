@@ -1,63 +1,34 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
 import { UserContext } from '../context/UserProvider'
+import NavItem from "./NavItem"
+import NavLinks from "./NavLinks"
+import DropdownMenu from "./DropdownMenu"
+import { ReactComponent as CaretIcon } from "../assets/icons/caret.svg"
 import '../css/styles.css'
+import LightDarkBtn from './LightDarkBtn'
 
-export default function Navbar() {
-  const { logout, user: { username }, token } = useContext(UserContext)
-
-  const activeStyle = {
-    fontWeight: "bold",
-    textDecoration: "underline",
-    color: "red"
-  }
+export default function Navbar(props) {
+  const { token } = useContext(UserContext)
 
   return (
     <>
       {token ? 
-        <div className='navbar'>
-          <NavLink 
-            to='/profile'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Profile
-          </NavLink>
-          
-          <NavLink 
-            to='/issues'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Public
-          </NavLink>
-          
-          <NavLink 
-            to='/post'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-             + 
-          </NavLink>
-          
-          <div>
-            <p>Logged in as: <b>{username}</b></p>
-            <button onClick={logout}>Logout</button>
-          </div>
-        </div> 
+        <nav className='navbar'>
+          <ul className="navbar-nav">
+            <NavLinks />
+            <NavItem icon={<CaretIcon />}>
+              <DropdownMenu></DropdownMenu>
+            </NavItem>
+            <LightDarkBtn />
+          </ul>
+        </nav> 
       :
-        <div className='navbar'>
-          <NavLink 
-            to='/'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Public
-          </NavLink>
-          
-          <NavLink 
-            to='/auth'
-            style={({isActive}) => isActive ? activeStyle : null}
-          >
-            Login
-          </NavLink>
-        </div>
+        <nav className='navbar'>
+          <ul className="navbar-nav">
+            <NavLinks />
+            <LightDarkBtn />
+          </ul>
+        </nav>
       }
     </>
   )

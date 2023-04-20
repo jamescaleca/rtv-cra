@@ -13,6 +13,7 @@ export default function Public(){
 
   return (
     <div className="public">
+      <h2>🔥 Hottest issues 🔥</h2>
       <PublicIssueList />
     </div>
   )

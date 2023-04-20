@@ -25,6 +25,7 @@ export default function UserProvider(props) {
   const [publicIssues, setPublicIssues] = useState([])
   const [issue, setIssue] = useState(null)
   const [comments, setComments] = useState([])
+  const [darkMode, setDarkMode] = useState(false)
 
   function signup(credentials) {
     axios.post('/auth/signup', credentials)
@@ -247,7 +248,9 @@ export default function UserProvider(props) {
         setIssue,
         comments,
         setComments,
-        userAxios
+        userAxios,
+        darkMode, 
+        setDarkMode
       }}
     >
       { props.children }
