@@ -71,9 +71,89 @@ a {
   padding: 3px 8px;
 }
 
+.navbar .darkmode-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar .darkmode-button label {
+  width: 100px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ebebeb;
+  border-radius: 200px;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+          box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+}
+
+.navbar .darkmode-button label img {
+  z-index: 100;
+}
+
+.navbar .darkmode-button label .sun {
+  left: 40px;
+  fill: #fff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.navbar .darkmode-button label .moon {
+  left: 340px;
+  fill: #7e7e7e;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.navbar .darkmode-button label:after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  top: 10px;
+  left: 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffcc89), to(#d8860b));
+  background: linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 180px;
+  -webkit-box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .darkmode-button label:active:after {
+  width: 260px;
+}
+
+.navbar .darkmode-button #darkmode-toggle {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.navbar .darkmode-button #darkmode-toggle:checked + label {
+  background: #242424;
+}
+
+.navbar .darkmode-button #darkmode-toggle:checked + label:after {
+  left: 490px;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#777), to(#3a3a3a));
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+
+.navbar .darkmode-button label, .navbar .darkmode-button label:after {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
 .navbar .navbar-nav {
   max-width: 100%;
-  z-index: 9999;
+  z-index: 8000;
   padding: 0 1rem;
   display: -webkit-box;
   display: -ms-flexbox;

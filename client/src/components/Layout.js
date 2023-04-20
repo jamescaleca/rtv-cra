@@ -4,7 +4,8 @@ import Navbar from './Navbar'
 import NavLinks from "./NavLinks"
 import NavItem from './NavItem'
 import DropdownMenu from './DropdownMenu'
-import { ReactComponent as CaretIcon } from '../assets/icons/caret.svg';
+import { ReactComponent as CaretIcon } from '../assets/icons/caret.svg'
+import LightDarkBtn from './LightDarkBtn'
 import { UserContext } from '../context/UserProvider'
 
 
@@ -14,12 +15,7 @@ export default function Layout() {
 
   return (
     <>
-      <Navbar>
-        <NavLinks />
-        <NavItem icon={<CaretIcon />}>
-          <DropdownMenu></DropdownMenu>
-        </NavItem>
-      </Navbar>
+      <Navbar />
       <Outlet />
     </>
   )
