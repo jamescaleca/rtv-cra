@@ -26,11 +26,21 @@ app.use(
   require('./routes/issueRouter.js')
 )
 
-// app.use('/api/issues', require('./routes/issueRouter.js'))
-
 app.use(
   '/comments',
   require('./routes/commentRouter.js')
+)
+
+app.use(
+  '/issues',
+  jwt({ secret: secret, algorithms: ['HS256']}),
+  require('./routes/protectedIssueRouter.js')
+)
+
+app.use(
+  '/comments',
+  jwt({ secret: secret, algorithms: ['HS256']}),
+  require('./routes/protectedCommentRouter.js')
 )
 
 app.use((err, req, res, next) => {

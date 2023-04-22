@@ -16,12 +16,14 @@ const issueSchema = new Schema({
   },
   upvotes: [{
     user: {
-      type: Schema.Types.ObjectId
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
   }],
   downvotes: [{
     user: {
-      type: Schema.Types.ObjectId
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
   }],
   votesTotal: {
