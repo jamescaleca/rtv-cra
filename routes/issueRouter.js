@@ -31,7 +31,6 @@ issueRouter.get('/:issueId',   (req, res, next) => {
       res.status(500)
       return next(err)
     }
-    console.log(issue.comments)
     return res.status(200).send(issue)
   })
 } )

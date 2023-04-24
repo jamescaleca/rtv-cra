@@ -8,7 +8,7 @@ protectedIssueRouter.post('/', (req, res, next) => {
   req.body.username = req.auth.username
   console.log(req.auth)
   const newIssue = new Issue(req.body)
-  newIssue.upvotes.push({ user: req.body.user })
+  newIssue.upvotes.push({ user: req.auth._id })
   newIssue.votesTotal = 1
   newIssue.save((err, savedIssue) => {
     if(err){
@@ -26,12 +26,32 @@ protectedIssueRouter.put('/upvote/:issueId', (req, res, next) => {
     // append the  upvote to the array
     const exists = Array.from(issue.upvotes).find(upvote => 
       String(upvote.user) === req.auth._id)
-    const downvoteExist = Array.from(issue.downvotes).find(downvote => 
-      String(downvote.user === req.auth._id)
+    const downvoteExist = Array.from(issue.downvotes).find(downvote => (
+      String(downvote.user) === req.auth._id)
     )
-    // if(exists && downvoteExist) {
-    //   return res.status(201).send(issue)
-    // }
+    if(downvoteExist){
+      issue.downvotes.id(downvoteExist._id).remove()
+      issue.upvotes.push({user: req.auth._id})
+      issue.votesTotal += 2
+      issue.save(err => {
+        if(err){
+          res.status(500)
+          return next(err)
+        }
+          return res.status(201).send(issue)
+      })
+    }
+    if(exists){
+      issue.upvotes.id(exists._id).remove()
+      issue.votesTotal--
+      issue.save(err => {
+        if(err){
+          res.status(500);
+          return next(err);
+        }
+          return res.status(201).send(issue)
+      })
+    } 
     if(!exists && !downvoteExist) {
       issue.upvotes.push({ user: req.auth._id })
       issue.votesTotal++
@@ -44,30 +64,8 @@ protectedIssueRouter.put('/upvote/:issueId', (req, res, next) => {
           return res.status(201).send(issue)
       })
     //  send it back to the client
-    } else if(downvoteExist){
-      issue.downvotes.id(downvoteExist._id).remove()
-      issue.upvotes.push({user: req.auth._id})
-      issue.votesTotal += 2
-      issue.save(err => {
-        if(err){
-          res.status(500)
-          return next(err)
-        }
-          return res.status(201).send(issue)
-      })
-    } else if(exists){
-      issue.upvotes.id(exists._id).remove()
-      issue.votesTotal--
-      issue.save(err => {
-        if(err){
-          res.status(500);
-          return next(err);
-        }
-          return res.status(201).send(issue)
-      })
-    } else {
-        return res.status(201).send(issue)
     }
+    // return res.status(201).send(issue)
   })
 })
 
@@ -76,11 +74,36 @@ protectedIssueRouter.put('/downvote/:issueId', (req, res, next) => {
   // find the issue
   Issue.findById(req.params.issueId, (err, issue) =>{
     // append the upvote to the array
-    const exists = Array.from(issue.downvotes).find(downvote => 
+    const exists = Array.from(issue.downvotes).find(downvote => (
       String(downvote.user) === req.auth._id)
-    const upvoteExist = Array.from(issue.upvotes).find(upvote => 
+    )
+    const upvoteExist = Array.from(issue.upvotes).find(upvote => (
       String(upvote.user === req.auth._id))
+    )
 
+    if(upvoteExist) {
+      issue.upvotes.id(upvoteExist._id).remove()
+      issue.downvotes.push({user: req.auth._id})
+      issue.votesTotal -= 2
+      issue.save(err => {
+        if(err){
+          res.status(500);
+          return next(err);
+        }
+        return res.status(201).send(issue)
+      })
+    }
+    if(exists) {
+      issue.downvotes.id(exists._id).remove()
+      issue.votesTotal++
+      issue.save(err => {
+        if(err){
+          res.status(500);
+          return next(err);
+        }
+        return res.status(201).send(issue);
+      }) 
+    }
     if(!exists && !upvoteExist) {
       issue.downvotes.push({user: req.auth._id})
       issue.votesTotal--
@@ -93,30 +116,9 @@ protectedIssueRouter.put('/downvote/:issueId', (req, res, next) => {
           return res.status(201).send(issue);
       })
     //  send it back to the client
-    } else if(upvoteExist) {
-      issue.upvotes.id(upvoteExist._id).remove()
-      issue.downvotes.push({user: req.auth._id})
-      issue.votesTotal -= 2
-      issue.save(err => {
-        if(err){
-          res.status(500);
-          return next(err);
-        }
-        return res.status(201).send(issue)
-      })
-    } else if(exists) {
-      issue.downvotes.id(exists._id).remove()
-      issue.votesTotal++
-      issue.save(err => {
-        if(err){
-          res.status(500);
-          return next(err);
-        }
-        return res.status(201).send(issue);
-      }) 
-    } else {
-      return res.status(201).send(issue)
     }
+    // return res.status(201).send(issue)
+    
   })
 })
 
