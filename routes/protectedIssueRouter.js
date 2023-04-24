@@ -21,9 +21,7 @@ protectedIssueRouter.post('/', (req, res, next) => {
 
 // Upvote an issue
 protectedIssueRouter.put('/upvote/:issueId', (req, res, next) => {
-  // find the issue
   Issue.findById(req.params.issueId, (err, issue) =>{
-    // append the  upvote to the array
     const exists = Array.from(issue.upvotes).find(upvote => 
       String(upvote.user) === req.auth._id)
     const downvoteExist = Array.from(issue.downvotes).find(downvote => (
@@ -38,7 +36,7 @@ protectedIssueRouter.put('/upvote/:issueId', (req, res, next) => {
           res.status(500)
           return next(err)
         }
-          return res.status(201).send(issue)
+        return res.status(201).send(issue)
       })
     }
     if(exists){
@@ -49,21 +47,19 @@ protectedIssueRouter.put('/upvote/:issueId', (req, res, next) => {
           res.status(500);
           return next(err);
         }
-          return res.status(201).send(issue)
+        return res.status(201).send(issue)
       })
     } 
     if(!exists && !downvoteExist) {
       issue.upvotes.push({ user: req.auth._id })
       issue.votesTotal++
-    // save the issue
       issue.save(err => {
         if(err){
           res.status(500)
           return next(err)
         }
-          return res.status(201).send(issue)
+        return res.status(201).send(issue)
       })
-    //  send it back to the client
     }
     // return res.status(201).send(issue)
   })
@@ -71,16 +67,13 @@ protectedIssueRouter.put('/upvote/:issueId', (req, res, next) => {
 
 // Downvote an issue
 protectedIssueRouter.put('/downvote/:issueId', (req, res, next) => {
-  // find the issue
   Issue.findById(req.params.issueId, (err, issue) =>{
-    // append the upvote to the array
     const exists = Array.from(issue.downvotes).find(downvote => (
       String(downvote.user) === req.auth._id)
     )
     const upvoteExist = Array.from(issue.upvotes).find(upvote => (
       String(upvote.user === req.auth._id))
     )
-
     if(upvoteExist) {
       issue.upvotes.id(upvoteExist._id).remove()
       issue.downvotes.push({user: req.auth._id})
@@ -107,18 +100,15 @@ protectedIssueRouter.put('/downvote/:issueId', (req, res, next) => {
     if(!exists && !upvoteExist) {
       issue.downvotes.push({user: req.auth._id})
       issue.votesTotal--
-    // save the issue
       issue.save(err => {
         if(err){
           res.status(500);
           return next(err);
         }
-          return res.status(201).send(issue);
+        return res.status(201).send(issue);
       })
-    //  send it back to the client
     }
     // return res.status(201).send(issue)
-    
   })
 })
 
@@ -132,7 +122,13 @@ protectedIssueRouter.route('/:issueId')
           res.status(500)
           return next(err)
         }
-        return res.status(200).send(`Successfully deleted issue: ${deletedIssue.title}`)
+        if(deletedIssue) {
+          return res.status(200).send(`Successfully deleted issue: ${deletedIssue.title}`)
+        } else {
+          console.log("No issue matches the provided query")
+          res.status(504)
+          return next(err)
+        }
       }
     )
   })

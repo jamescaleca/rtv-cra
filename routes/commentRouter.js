@@ -30,19 +30,19 @@ commentRouter.route('/:issueId/:commentId')
   })
 
 // Delete comment by ID
-  .delete((req, res, next) => {
-    req.body.user = req.auth._id
-    const issueId = req.params.issueId
-    Comment.findOneAndDelete(
-      ({ _id: req.params.commentId, user: req.body.user, issue: issueId }),
-      (err, deletedComment) => {
-        if(err){
-          res.status(500)
-          return next(err)
-        }
-        return res.status(200).send(`Successfully deleted comment: ${deletedComment.comment}`)
-      }
-    )
-  })
+  // .delete((req, res, next) => {
+  //   req.body.user = req.auth._id
+  //   const issueId = req.params.issueId
+  //   Comment.findOneAndDelete(
+  //     ({ _id: req.params.commentId, user: req.body.user, issue: issueId }),
+  //     (err, deletedComment) => {
+  //       if(err){
+  //         res.status(500)
+  //         return next(err)
+  //       }
+  //       return res.status(200).send(`Successfully deleted comment: ${deletedComment.comment}`)
+  //     }
+  //   )
+  // })
 
 module.exports = commentRouter
