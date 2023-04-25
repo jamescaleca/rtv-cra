@@ -6,12 +6,12 @@ import {
   Route, 
   Navigate 
 } from 'react-router-dom'
-import Login, { loader as loginLoader } from './pages/Login'
+import Login, { loader as loginLoader, action as loginAction } from './pages/Login'
 import Profile from './pages/Profile'
 import Public, { loader as issuesLoader } from './pages/Public'
 import Post from './pages/Post'
 import IssueList from './components/IssueList'
-import IssueDetailPage, { loader as issueDetailPageLoader} from './pages/IssueDetailPage'
+import IssueDetailPage, { loader as issueDetailPageLoader } from './pages/IssueDetailPage'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
 import { UserContext } from './context/UserProvider'
@@ -26,22 +26,23 @@ const router = createBrowserRouter(createRoutesFromElements(
       loader={issuesLoader}
     />
     <Route 
-      path='/login'
+      path='login'
       element={<Login />}
       loader={loginLoader}
+      action={loginAction}
     />
     <Route 
-      path='/issues/:issueId'
+      path='issues/:issueId'
       element={<IssueDetailPage />}
       loader={issueDetailPageLoader}
     />
     <Route 
-      path='/profile'
+      path="profile"
       element={<Profile />}
       
     />
     <Route 
-      path='/post'
+      path='post'
       element={<Post />}
     />
     <Route 
