@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import Auth from './pages/Auth'
+import Login from "./pages/Login"
 import Profile from './pages/Profile'
-import Public, { loader as issuesLoader } from './pages/Public'
+import Public from './pages/Public'
 import Post from './pages/Post'
 import IssueList from './components/IssueList'
-import IssueDetailPage, { loader as issueDetailPageLoader } from './pages/IssueDetailPage'
+import IssueDetailPage from './pages/IssueDetailPage'
 import NotFound from './pages/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
@@ -21,23 +21,16 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route 
-              path='/'
-              element={token ? <Navigate to='/issues' /> : <Auth />}
+              path="/"
+              element={<Public />}
             />
-            
             <Route 
-              path='/issues' 
-              element={<ProtectedRoute token={token} redirectTo='/'>
-                  <Public />
-                </ProtectedRoute>
-              } 
+              path="/login"
+              element={<Login />}
             />
             <Route 
               path='/issues/:issueId'
-              element={<ProtectedRoute token={token} redirectTo='/'>
-                  <IssueDetailPage />
-                </ProtectedRoute>
-              }
+              element={<IssueDetailPage />}
             />
             <Route 
               path='/profile'
