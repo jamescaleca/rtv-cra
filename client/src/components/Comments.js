@@ -2,9 +2,6 @@ import React from 'react'
 
 export default function Comments(props) {
   const comments = props.comments
-
-  console.log(comments)
-
   return (
     <>
       <h1>Comments go here:</h1>

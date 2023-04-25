@@ -88,7 +88,7 @@ export default function UserProvider(props) {
 
   // Get All Issues
   function getAllIssues() {
-    userAxios.get('/issues')
+    axios.get('/issues')
       .then(res => {
         console.log(res.data)
         setPublicIssues(res.data)
@@ -98,7 +98,7 @@ export default function UserProvider(props) {
 
   // GET USER ISSUES
   function getUserIssues() {
-    userAxios.get('/issues/user')
+    axios.get('/issues/user')
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: res.data

@@ -18,25 +18,29 @@ mongoose.connect("mongodb://localhost:27017/rtv",
 
 app.use(
   '/auth', 
-  require('./routes/authRouter.js'), 
-  jwt({
-    secret: secret,
-    algorithms: ['HS256']
-  })
+  require('./routes/authRouter.js')
 )
 
 app.use(
   '/issues', 
-  jwt({ secret: secret, algorithms: ['HS256'] }), 
   require('./routes/issueRouter.js')
 )
 
-// app.use('/api/issues', require('./routes/issueRouter.js'))
+app.use(
+  '/comments',
+  require('./routes/commentRouter.js')
+)
+
+app.use(
+  '/issues',
+  jwt({ secret: secret, algorithms: ['HS256']}),
+  require('./routes/protectedIssueRouter.js')
+)
 
 app.use(
   '/comments',
   jwt({ secret: secret, algorithms: ['HS256']}),
-  require('./routes/commentRouter.js')
+  require('./routes/protectedCommentRouter.js')
 )
 
 app.use((err, req, res, next) => {
