@@ -142,7 +142,7 @@ export default function UserProvider(props) {
 
   // ADD A COMMENT
   function addComment(newComment, issueId) {
-    userAxios.post(`/issues/${issueId}/comments`, newComment)
+    userAxios.post(`/comments/${issueId}`, newComment)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: prevState.issues.map(issue => 

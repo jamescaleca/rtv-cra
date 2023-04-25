@@ -25,7 +25,7 @@ issueRouter.get('/user', (req, res, next) => {
 })
 
 // Get single issue by ID
-issueRouter.get('/:issueId',   (req, res, next) => {
+issueRouter.get('/:issueId', (req, res, next) => {
   Issue.findById((req.params.issueId), (err, issue) => {
     if(err) {
       res.status(500)
