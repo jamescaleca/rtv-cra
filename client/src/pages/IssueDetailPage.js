@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 import Comments from '../components/Comments'
 import '../css/styles.css'
 
-function IssueCommentsPage() {
+export default function IssueDetailPage() {
   const { userAxios, 
     getAllComments, 
     issues, 
@@ -19,7 +19,7 @@ function IssueCommentsPage() {
   } = useContext(UserContext)
 
   const { issueId } = useParams()
-  console.log(issueId)
+  console.log(issue)
 
   
   // const { title, description, _id, user, username } = props.location.state
@@ -27,7 +27,7 @@ function IssueCommentsPage() {
   useEffect(() => {
     getIssueById(issueId)
     getAllComments(issueId)
-  }, [issueId])
+  }, [])
 
 
   function addComment(newComment, issueId) {
@@ -109,7 +109,16 @@ function IssueCommentsPage() {
           </Link>
           <h1>{issue.title}</h1>
           <p>{issue.description}</p>
-          <h3>Posted by <i>{issue.username}</i></h3>
+          <h3>Posted by 
+            <i>
+              <Link 
+                to={`/user/${issue.username}`} 
+                state={{ user: issue.user }}
+              >
+                {` ${issue.username}`}
+              </Link>
+            </i>
+          </h3>
 
           <Comments 
             comments={comments}
@@ -146,5 +155,3 @@ function IssueCommentsPage() {
     </div>
   )
 }
-
-export default IssueCommentsPage

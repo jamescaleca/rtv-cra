@@ -12,9 +12,22 @@ issueRouter.get('/', (req, res, next) => {
     return res.status(200).send(issues)
   })
 })
+// Get single issue by ID
+issueRouter.get('/:issueId', (req, res, next) => {
+  const issueId = req.params.issueId
+  console.log(issueId)
+  Issue.findById((issueId), (err, issue) => {
+    if(err) {
+      res.status(500)
+      return next(err)
+    }
+    console.log(req.params)
+    return res.status(200).send(issue)
+  })
+})
 
 // Get issues by user id
-issueRouter.get('/:userId', (req, res, next) => {
+issueRouter.get('/user/:userId', (req, res, next) => {
   Issue.find({ user: req.params.userId }, (err, issues) => {
     if(err){
       res.status(500)
@@ -24,16 +37,6 @@ issueRouter.get('/:userId', (req, res, next) => {
   })
 })
 
-// Get single issue by ID
-issueRouter.get('/:issueId', (req, res, next) => {
-  Issue.findById((req.params.issueId), (err, issue) => {
-    if(err) {
-      res.status(500)
-      return next(err)
-    }
-    return res.status(200).send(issue)
-  })
-} )
 
 
 module.exports = issueRouter

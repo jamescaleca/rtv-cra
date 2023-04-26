@@ -6,6 +6,7 @@ import Public from './pages/Public'
 import Post from './pages/Post'
 import IssueList from './components/IssueList'
 import IssueDetailPage from './pages/IssueDetailPage'
+import OtherUserProfile from './pages/OtherUserProfile'
 import NotFound from './pages/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
 import Layout from './components/Layout'
@@ -31,6 +32,10 @@ function App() {
             <Route 
               path='/issues/:issueId'
               element={<IssueDetailPage />}
+            />
+            <Route 
+              path='/user/:username'
+              element={<OtherUserProfile />}
             />
             <Route 
               path='/profile'

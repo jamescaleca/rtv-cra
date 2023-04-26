@@ -89,15 +89,14 @@ export default function UserProvider(props) {
   function getAllIssues() {
     axios.get('/issues')
       .then(res => {
-        console.log(res.data)
         setPublicIssues(res.data)
       })
       .catch(err => console.log(err.res.data.errMsg))
   }
 
   // GET USER ISSUES
-  function getUserIssues() {
-    axios.get('/issues/user')
+  function getUserIssues(userId) {
+    axios.get(`/issues/${userId}`)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: res.data
@@ -134,8 +133,11 @@ export default function UserProvider(props) {
 
   //GET ISSUE BY ID
   function getIssueById(issueId) {
-    userAxios.get(`/issues/${issueId}`)
-      .then(res => setIssue(res.data))
+    axios.get(`/issues/${issueId}`)
+      .then(res => {
+        console.log(res.data)
+        setIssue(res.data)
+      })
       .catch(err => console.log(err.response.data.errMsg))
   }
 
