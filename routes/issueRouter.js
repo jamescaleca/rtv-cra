@@ -14,8 +14,8 @@ issueRouter.get('/', (req, res, next) => {
 })
 
 // Get issues by user id
-issueRouter.get('/user', (req, res, next) => {
-  Issue.find({ user: req.auth._id }, (err, issues) => {
+issueRouter.get('/:userId', (req, res, next) => {
+  Issue.find({ user: req.params.userId }, (err, issues) => {
     if(err){
       res.status(500)
       return next(err)

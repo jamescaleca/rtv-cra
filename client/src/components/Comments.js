@@ -7,7 +7,7 @@ export default function Comments(props) {
       <h1>Comments go here:</h1>
       <ul>
         {comments.map(comment => (
-          <li>
+          <li key={comment._id}>
             <p>{comment.comment}</p>
             <p>Posted by: <i>{comment.username}</i></p>
           </li>

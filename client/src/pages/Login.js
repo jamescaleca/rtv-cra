@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 import AuthForm from '../components/AuthForm'
 import { UserContext } from '../context/UserProvider'
 import '../css/styles.css'
@@ -12,9 +13,52 @@ export default function Login() {
   const [status, setStatus] = useState("idle")
   const [error, setError] = useState(null)
 
-  const { signup, login, errMsg, resetAuthErr } = useContext(UserContext)
+  const { 
+    errMsg, 
+    resetAuthErr, 
+    setUserState, 
+    handleAuthError, 
+    getUserIssues 
+  } = useContext(UserContext)
 
   const navigate = useNavigate()
+
+  function signup(credentials) {
+    axios.post('/auth/signup', credentials)
+      .then(res => {
+        const { user, token } = res.data
+        console.log(res)
+        localStorage.setItem('token', token)
+        localStorage.setItem('user', JSON.stringify(user))
+        setUserState(prevUserState => ({
+          ...prevUserState,
+          user,
+          token
+        }))
+      })
+      .catch(err => handleAuthError(err.response.data.errMsg))
+      // .then(res => console.log(res))
+      // .catch(err => console.log(err))
+  }
+
+  function login(credentials) {
+    axios.post('/auth/login', credentials)
+      .then(res => {
+        const { user, token } = res.data
+        console.log(res.data)
+        localStorage.setItem('token', token)
+        localStorage.setItem('user', JSON.stringify(user))
+        getUserIssues()
+        setUserState(prevUserState => ({
+          ...prevUserState,
+          user,
+          token
+        }))
+        navigate("/profile", { replace: true })
+      })
+      .catch(err => handleAuthError(err.response.data.errMsg))
+      .finally(() => setStatus("idle"))
+  }
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -33,11 +77,6 @@ export default function Login() {
     e.preventDefault()
     setStatus("submitting")
     login(inputs)
-      .then(data => {
-        navigate("/profile", { replace: true })
-      })
-      .catch(err => setError(err))
-      .finally(() => setStatus("idle"))
   }
 
   function toggleForm() {
