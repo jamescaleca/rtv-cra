@@ -1,8 +1,16 @@
-$canvas: #171717;
-$element: #2e2e2e;
+$clr-dark: #171717;
+$clr-light: #dfe6ea;
 
-$font-title: rgb(233, 233, 233);
-$font-descr: rgb(206, 206, 206); 
+$clr-primary: #c9e3f0;
+$clr-secondary: #95a7af;
+$clr-accent: #8739F9;
+
+$font-title: #565360;
+$font-descr: #908E9B; 
+$font-disabled: #E1DFE9;
+
+$foreground: $clr-dark;
+$background: $clr-light;
 
 $nav-bg:  #242526;
 $nav-bg-accent: #484a4d;
@@ -11,6 +19,22 @@ $nav-size: 60px;
 $nav-border: 1px solid #474a4d;
 $nav-border-radius: 8px;
 $nav-speed: 500ms; 
+
+.darkmode {
+  $clr-dark: #2a2a2a;
+  $clr-light: #dfe6ea;
+
+  $clr-primary: #1f5662;
+  $clr-secondary: #192c2a;
+  $clr-accent: #8739F9;
+
+  $font-title: #cdccce;
+  $font-descr: #a6a6a6; 
+  $font-disabled: #7a7a7a;
+
+  $foreground: $clr-light;
+  $background: $clr-dark;
+}
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -21,11 +45,10 @@ $nav-speed: 500ms;
 
 body {
   margin: 0;
-  background: $canvas;
+  background: $background;
   display: flex;
   flex-direction: column;
-  background-color: $canvas;
-  color: $font-descr;
+  color: $font-title;
   padding-bottom: 3rem;
   font-family: roboto;
   -webkit-font-smoothing: antialiased;
@@ -37,10 +60,8 @@ code {
     monospace;
 }
 
-h2 {
+h1, h2, h3, h4, h5, h6 {
   color: $font-title;
-  font-size: 2.2em;
-  padding-bottom: .7rem;
 }
 
 ul {
@@ -50,10 +71,13 @@ ul {
 }
 
 a {
-  color: $nav-text-color;
+  color: $font-descr;
   text-decoration: none;;
 }
 
+p {
+  color: $font-descr;
+}
 
 .navbar {
   color: $font-title;
@@ -61,14 +85,15 @@ a {
   justify-content: space-around;
   align-items: center;
   height: $nav-size;
-  background-color: $nav-bg;
-  border-bottom: $nav-border;
+  background: $clr-secondary;
+  border-bottom: $foreground;
+  padding: 1rem 1rem;
   a {
     text-decoration: none;
     color: $font-title;
   }
   button {
-    background-color: $element;
+    background-color: $clr-primary;
     color: firebrick;
     padding: 3px 8px;
   }
@@ -130,7 +155,6 @@ a {
     }
   }
   .navbar-nav {
-    max-width: 100%;
     z-index: 8000;
     padding: 0 1rem;
     display: flex;
@@ -138,16 +162,18 @@ a {
     justify-content: space-around;
     align-items: center;
     width: 100%;
-
+    svg {
+      fill: $foreground;
+      width: 20px;
+    }
     .nav-item {
       width: calc($nav-size * 0.8);
       display: flex;
       align-items: center;
       justify-content: center;
       .icon-button {
-        $button-size: calc($nav-size * 0.5);
+        $button-size: calc($nav-size * 1);
         width: $button-size;
-        height: $button-size;
         background-color: #484a4d;
         border-radius: 10px;
         padding: 8px;
@@ -159,7 +185,6 @@ a {
         svg {
           fill: $nav-text-color;
           width: 20px;
-          height: 20px;
         }
       }
       
@@ -231,14 +256,14 @@ a {
       input[type=text] {
         padding: 10px;
         margin: 10px 0;
-        background: $element;
+        background: $clr-primary;
         color: $font-descr;
         width: 100%;
       }
       textarea {
         padding: 10px;
         margin: 10px 0;
-        background: $element;
+        background: $clr-primary;
         color: $font-descr;
         width: 100%;
       }
@@ -256,7 +281,7 @@ a {
       }
       button {
         background: $font-title;
-        color: $element;
+        color: $clr-primary;
         padding: 10px;
         border-radius: 20px;
         font-size: 1rem;
@@ -423,7 +448,7 @@ a {
     flex-direction: column;
     margin: 16px 0;
     border: 1px solid;
-    background-color: $element;
+    background-color: $clr-primary;
     padding: 16px;
     border-radius: 5px;
     input, button {
@@ -450,7 +475,7 @@ a {
     border: 1px solid;
     padding: 20px;
     border-radius: 5px;
-    background-color: $element;
+    background-color: $clr-primary;
     display: flex;
     flex-direction: column;
     input {

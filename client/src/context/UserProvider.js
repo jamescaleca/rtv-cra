@@ -24,7 +24,33 @@ export default function UserProvider(props) {
   const [publicIssues, setPublicIssues] = useState([])
   const [issue, setIssue] = useState(null)
   const [comments, setComments] = useState([])
-  const [darkMode, setDarkMode] = useState(false)
+
+  let darkMode = localStorage.getItem("darkMode")
+  // const darkModeToggle = document.querySelector("#dark-mode-toggle")
+
+  const enableDarkMode = () => {
+    document.body.classList.add("darkmode")
+    localStorage.setItem("darkMode", "enabled")
+  }
+  const disableDarkMode = () => {
+    document.body.classList.remove("darkmode")
+    localStorage.setItem("darkMode", null)
+  }
+
+  if (darkMode === "enabled") {
+    enableDarkMode()
+  }
+
+  const darkModeToggle = () => {
+    darkMode = localStorage.getItem("darkMode")
+    if(darkMode !== "enabled") {
+      enableDarkMode()
+      console.log(darkMode)
+    } else {
+      disableDarkMode()
+      console.log(darkMode)
+    }
+  }
 
   function signup(credentials) {
     axios.post('/auth/signup', credentials)
@@ -251,7 +277,7 @@ export default function UserProvider(props) {
         setComments,
         userAxios,
         darkMode, 
-        setDarkMode
+        darkModeToggle
       }}
     >
       { props.children }

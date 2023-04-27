@@ -5,10 +5,12 @@ export default function NavItem(props) {
   const [open, setOpen] = useState(false);
   const { user: { username } } = useContext(UserContext)
 
+  const { icon } = props
+  
   return (
     <li className="nav-item">
       <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
-        {username}{props.icon}
+        {username}{icon}
       </a>
       {open && props.children}
     </li>

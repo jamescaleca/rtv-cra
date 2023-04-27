@@ -3,12 +3,14 @@ import { UserContext } from '../context/UserProvider'
 import NavItem from "./NavItem"
 import NavLinks from "./NavLinks"
 import DropdownMenu from "./DropdownMenu"
+import LightDarkBtn from './LightDarkBtn'
+import {ReactComponent as CircleIcon } from "../assets/icons/circle-half-stroke.svg"
 import { ReactComponent as CaretIcon } from "../assets/icons/caret.svg"
 import '../css/styles.css'
-import LightDarkBtn from './LightDarkBtn'
+
 
 export default function Navbar(props) {
-  const { token } = useContext(UserContext)
+  const { token, darkMode, darkModeToggle, setThemeInStorage } = useContext(UserContext)
 
   return (
     <>
@@ -19,14 +21,22 @@ export default function Navbar(props) {
             <NavItem icon={<CaretIcon />}>
               <DropdownMenu></DropdownMenu>
             </NavItem>
-            <LightDarkBtn />
+            {/* <LightDarkBtn /> */}
+            <CircleIcon 
+              onClick={darkModeToggle}
+              id="dark-mode-toggle"
+            />
           </ul>
         </nav> 
       :
         <nav className='navbar'>
           <ul className="navbar-nav">
             <NavLinks />
-            <LightDarkBtn />
+            {/* <LightDarkBtn /> */}
+            <CircleIcon 
+              onClick={darkModeToggle}
+              id="dark-mode-toggle"
+            />
           </ul>
         </nav>
       }

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+import { useLocation } from "react-router-dom"
 import IssueMap from "../components/IssueMap"
 import { UserContext } from '../context/UserProvider'
 import Patrick from '../assets/images/patrick.jpeg'
@@ -6,6 +7,7 @@ import '../css/styles.css'
 
 export default function Public(){
   const { getAllIssues, publicIssues } = useContext(UserContext)
+  const { pathname } = useLocation()
 
   useEffect(() => {
     getAllIssues()
@@ -23,6 +25,7 @@ export default function Public(){
         :
         <IssueMap 
           issues={publicIssues}
+          pathname={pathname}
         />
       }
     </div>
