@@ -7,9 +7,9 @@ export default function IssueList(props) {
   const { issues, editIssue, deleteIssue, username } = props
   // console.log(username)
   return (
-    <ul id='profile-issue-list'>
+    <ul className='issue-list'>
       { issues.map((issue) => 
-        <li className='profile-issue-li' key={issue._id}>
+        <li className='issue-li' key={issue._id}>
           <Link 
             to={`/issues/${issue._id}`}
           >

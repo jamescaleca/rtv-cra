@@ -18,14 +18,6 @@ export default function NavLinks() {
         <>
           <li className="nav-link">
             <NavLink 
-              to='/profile'
-              style={({isActive}) => isActive ? activeStyle : null}
-            >
-              Profile
-            </NavLink>
-          </li>
-          <li className="nav-link">
-            <NavLink 
               to='/'
               style={({isActive}) => isActive ? activeStyle : null}
             >

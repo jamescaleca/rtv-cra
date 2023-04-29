@@ -122,7 +122,7 @@ export default function UserProvider(props) {
 
   // GET USER ISSUES
   function getUserIssues(userId) {
-    axios.get(`/issues/${userId}`)
+    axios.get(`/issues/user/${userId}`)
       .then(res => setUserState(prevState => ({
         ...prevState,
         issues: res.data

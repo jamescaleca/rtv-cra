@@ -171,6 +171,7 @@ p {
       display: flex;
       align-items: center;
       justify-content: center;
+      border: $font-title;
       .icon-button {
         $button-size: calc($nav-size * 1);
         width: $button-size;
@@ -184,7 +185,7 @@ p {
         transition: filter 300ms;
         svg {
           fill: $font-title;
-          width: 20px;
+          width: 15px;
         }
       }
       
@@ -489,4 +490,27 @@ p {
       border-radius: 4px;
     }
   }
+}
+
+.tooltip {
+  position: relative;
+  display: flex;
+  // height: auto;
+}
+.tooltip
+.tooltiptext {
+  font-size: .8rem;
+  visibility: hidden;
+  color: #a6a6a6;
+  width: auto;
+  background-color: rgb(71, 71, 71);
+  text-align: center;
+  border-radius: 6px;
+  padding: .2rem .3rem;
+  position: absolute;
+  z-index: 60;
+}
+.tooltip:hover 
+.tooltiptext {
+  visibility: visible;
 }

@@ -187,6 +187,7 @@ p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: #565360;
 }
 
 .navbar .navbar-nav .nav-item .icon-button {
@@ -212,7 +213,7 @@ p {
 
 .navbar .navbar-nav .nav-item .icon-button svg {
   fill: #565360;
-  width: 20px;
+  width: 15px;
 }
 
 .navbar .navbar-nav .nav-item .icon-button:hover {
@@ -636,5 +637,31 @@ p {
   margin: 16px 8px;
   padding: 8px;
   border-radius: 4px;
+}
+
+.tooltip {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tooltip
+.tooltiptext {
+  font-size: .8rem;
+  visibility: hidden;
+  color: #a6a6a6;
+  width: auto;
+  background-color: #474747;
+  text-align: center;
+  border-radius: 6px;
+  padding: .2rem .3rem;
+  position: absolute;
+  z-index: 60;
+}
+
+.tooltip:hover
+.tooltiptext {
+  visibility: visible;
 }
 /*# sourceMappingURL=styles.css.map */

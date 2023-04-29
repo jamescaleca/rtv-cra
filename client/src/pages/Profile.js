@@ -8,7 +8,7 @@ import '../css/styles.css'
 export default function Profile() {
   const {
     issues,
-    user: { username },
+    user: { username, _id },
     token,
     getUserIssues,
     deleteIssue,
@@ -16,21 +16,19 @@ export default function Profile() {
   } = useContext(UserContext)
 
   useEffect(() => {
-    getUserIssues()
+    getUserIssues(_id)
   }, [])
   
   return (
     <div className='profile'>
       
-      {/* <div id='add-issue-txt'>
+      <div id='add-issue-txt'>
         <h3>Add an Issue</h3>
       </div>
-      <IssueForm /> */}
+      <IssueForm />
 
       <h2>😎 Your Issues 😎</h2>
-      {/* <IssueMap 
-        issues={issues}
-      /> */}
+      <IssueMap issues={issues} />
       {/* <IssueList 
         issues={issues}
         deleteIssue={deleteIssue}
