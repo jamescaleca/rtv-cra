@@ -174,7 +174,7 @@ p {
       .icon-button {
         $button-size: calc($nav-size * 1);
         width: $button-size;
-        background-color: #484a4d;
+        background-color: $clr-secondary;
         border-radius: 10px;
         padding: 8px;
         margin: 2px;
@@ -183,7 +183,7 @@ p {
         justify-content: center;
         transition: filter 300ms;
         svg {
-          fill: $nav-text-color;
+          fill: $font-title;
           width: 20px;
         }
       }
@@ -196,7 +196,7 @@ p {
         position: absolute;
         top: 2rem;
         transform: translateX(-45%);
-        background-color: $nav-bg;
+        background-color: $clr-secondary;
         border: $nav-border;
         border-radius: $nav-border-radius;
         padding: .8rem;
