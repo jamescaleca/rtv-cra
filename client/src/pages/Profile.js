@@ -12,7 +12,8 @@ export default function Profile() {
     token,
     getUserIssues,
     deleteIssue,
-    editIssue
+    editIssue,
+    
   } = useContext(UserContext)
 
   useEffect(() => {

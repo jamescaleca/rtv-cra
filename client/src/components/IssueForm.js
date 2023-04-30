@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { useNavigate } from "react-router-dom"
 import { UserContext } from '../context/UserProvider'
 import '../css/styles.css'
 
@@ -12,6 +13,8 @@ export default function IssueForm(props) {
   const { editIssue, addIssue } = useContext(UserContext)
   const { editToggle, toggle } = props
   const { title, description } = inputs
+
+  const navigate = useNavigate()
 
   function handleChange(e) {
     const {name, value} = e.target
@@ -27,8 +30,7 @@ export default function IssueForm(props) {
     editIssue(inputs, props._id) :
     addIssue(inputs, props._id)
     setInputs(initInputs)
-    toggle()
-    // submitBtnRedirect()
+    navigate("/")
   }
 
 

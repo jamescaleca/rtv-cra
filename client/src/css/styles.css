@@ -655,6 +655,7 @@ p {
   background-color: #474747;
   text-align: center;
   border-radius: 6px;
+  margin: 20px;
   padding: .2rem .3rem;
   position: absolute;
   z-index: 60;
