@@ -25,6 +25,8 @@ export default function UserProvider(props) {
   const [issue, setIssue] = useState(null)
   const [comments, setComments] = useState([])
 
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
   let darkMode = localStorage.getItem("darkMode")
   // const darkModeToggle = document.querySelector("#dark-mode-toggle")
 
@@ -277,7 +279,8 @@ export default function UserProvider(props) {
         setComments,
         userAxios,
         darkMode, 
-        darkModeToggle
+        darkModeToggle,
+        timezone
       }}
     >
       { props.children }

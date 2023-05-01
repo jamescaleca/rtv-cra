@@ -79,6 +79,18 @@ p {
   color: $font-descr;
 }
 
+hr {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right, 
+    rgba(255, 255, 255, 0), 
+    rgba(255, 255, 255, 0.75), 
+    rgba(255, 255, 255, 0)
+  );
+}
+
 .navbar {
   color: $font-title;
   display: flex;
@@ -322,19 +334,8 @@ p {
     }
   }
 }
-.issue-li {
+.post-li {
   padding: 0 0 .5rem .5rem;
-  hr {
-    width: 100%;
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(
-      to right, 
-      rgba(255, 255, 255, 0), 
-      rgba(255, 255, 255, 0.75), 
-      rgba(255, 255, 255, 0)
-    );
-  }
   .issue-link {
     text-decoration: none;
     color: $font-descr;
@@ -379,6 +380,14 @@ p {
         brightness(97%) 
         contrast(91%);
     }
+  }
+  .comment {
+    padding: 0 0 .5rem 0;
+  }
+}
+.issue-comments-page {
+  ul {
+    margin-top: 1rem;
   }
 }
 .profile {

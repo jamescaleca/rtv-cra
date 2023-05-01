@@ -38,7 +38,9 @@ const issueSchema = new Schema({
   username: {
     type: String,
     required: true
-  }
-})
+  },
+},
+{timestamps: true}
+)
 
 module.exports = mongoose.model("Issue", issueSchema)

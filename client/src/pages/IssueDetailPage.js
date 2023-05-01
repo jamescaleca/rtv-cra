@@ -15,12 +15,12 @@ export default function IssueDetailPage() {
     userState, 
     setUserState, 
     comments, 
-    setComments 
+    setComments,
+    timezone
   } = useContext(UserContext)
 
   const { issueId } = useParams()
   console.log(issue)
-
   
   // const { title, description, _id, user, username } = props.location.state
 
@@ -95,7 +95,7 @@ export default function IssueDetailPage() {
   // console.log(issue.comments.length)
 
   return (
-    <div id='issue-comments-page'>
+    <div className='issue-comments-page'>
       {!issue ? 
         <h1>Loading...</h1> 
         :
@@ -107,9 +107,8 @@ export default function IssueDetailPage() {
           >
             &larr; <span>Back to all issues</span>
           </Link>
-          <h1>{issue.title}</h1>
-          <p>{issue.description}</p>
-          <h3>Posted by 
+          <h4>{issue.title}</h4>
+          <p>Posted by 
             <i>
               <Link 
                 to={`/user/${issue.username}`} 
@@ -118,7 +117,13 @@ export default function IssueDetailPage() {
                 {` ${issue.username}`}
               </Link>
             </i>
-          </h3>
+          </p>
+          <p>Date posted: {
+            new Date(issue.datePosted)
+              .toLocaleString('en-us', {timeZone: timezone})
+          }</p>
+          <hr />
+          <p>{issue.description}</p>
 
           <Comments 
             comments={comments}

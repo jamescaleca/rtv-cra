@@ -46,6 +46,14 @@ p {
   color: #908E9B;
 }
 
+hr {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(rgba(255, 255, 255, 0.75)), to(rgba(255, 255, 255, 0)));
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+
 .navbar {
   color: #565360;
   display: -webkit-box;
@@ -416,38 +424,30 @@ p {
   width: 30rem;
 }
 
-.issue-li {
+.post-li {
   padding: 0 0 .5rem .5rem;
 }
 
-.issue-li hr {
-  width: 100%;
-  border: 0;
-  height: 1px;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0)), color-stop(rgba(255, 255, 255, 0.75)), to(rgba(255, 255, 255, 0)));
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
-}
-
-.issue-li .issue-link {
+.post-li .issue-link {
   text-decoration: none;
   color: #908E9B;
 }
 
-.issue-li .issue-link h1 {
+.post-li .issue-link h1 {
   font-size: 2em;
   margin-bottom: .3em;
 }
 
-.issue-li .issue-link p {
+.post-li .issue-link p {
   font-size: .8rem;
 }
 
-.issue-li .issue-link .issue-title {
+.post-li .issue-link .issue-title {
   font-size: 1.4rem;
   padding: .3rem 0;
 }
 
-.issue-li .votes {
+.post-li .votes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -458,23 +458,31 @@ p {
   margin: .5rem 0;
 }
 
-.issue-li .votes img {
+.post-li .votes img {
   width: 1.2rem;
 }
 
-.issue-li .votes h3 {
+.post-li .votes h3 {
   margin: 0 1rem;
   color: #565360;
 }
 
-.issue-li .votes .upvote {
+.post-li .votes .upvote {
   -webkit-filter: invert(65%) sepia(9%) saturate(6603%) hue-rotate(1deg) brightness(104%) contrast(102%);
           filter: invert(65%) sepia(9%) saturate(6603%) hue-rotate(1deg) brightness(104%) contrast(102%);
 }
 
-.issue-li .votes .downvote {
+.post-li .votes .downvote {
   -webkit-filter: invert(57%) sepia(38%) saturate(1421%) hue-rotate(192deg) brightness(97%) contrast(91%);
           filter: invert(57%) sepia(38%) saturate(1421%) hue-rotate(192deg) brightness(97%) contrast(91%);
+}
+
+.post-li .comment {
+  padding: 0 0 .5rem 0;
+}
+
+.issue-comments-page ul {
+  margin-top: 1rem;
 }
 
 .profile {

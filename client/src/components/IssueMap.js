@@ -11,7 +11,8 @@ export default function IssueMap(props) {
     editIssue,
     deleteIssue,
     token,
-    username
+    username,
+    timezone
    } = useContext(UserContext)
   const [editToggle, setEditToggle] = useState(false)
   const { issues } = props
@@ -20,10 +21,12 @@ export default function IssueMap(props) {
 
   function toggle(){setEditToggle(prevToggle => !prevToggle)}
 
+  console.log(timezone)
+
   const mapIssues = [].concat(issues)
     .sort((a, b) => b.votesTotal - a.votesTotal)
     .map((issue) => 
-      <li key={issue._id} className='issue-li'>
+      <li key={issue._id} className='post-li'>
         <p>Posted by 
           <i>
             <Link 
@@ -36,14 +39,16 @@ export default function IssueMap(props) {
         </p>
         <Link className="issue-link" to={`/issues/${issue._id}`}>
           <h3 className="issue-title">{issue.title}</h3>
+          <p>{
+            new Date(issue.datePosted)
+              .toLocaleString('en-us', {timeZone: timezone})
+          }</p>
           <p>
             {issue.description.length > 60 ?
               `${issue.description.slice(0, 60)}...` :
               issue.description
             }
           </p>
-          {/* <h3>Upvotes: {issue.upvotes.length}</h3>
-          <h3>Downvotes: {issue.downvotes.length}</h3> */}
         </Link>
         <div className="votes">
           <img 
@@ -67,17 +72,19 @@ export default function IssueMap(props) {
   const profileMapIssues = [].concat(issues)
     .sort((a, b) => b.datePosted - a.datePosted)
     .map((issue) => 
-      <li key={issue._id} className='issue-li'>
+      <li key={issue._id} className='post-li'>
         <Link className="issue-link" to={`/issues/${issue._id}`}>
           <h3 className="issue-title">{issue.title}</h3>
+          <p>{
+            new Date(issue.datePosted)
+              .toLocaleString('en-us', {timeZone: timezone})
+          }</p>
           <p>
             {issue.description.length > 60 ?
               `${issue.description.slice(0, 60)}...` :
               issue.description
             }
           </p>
-          {/* <h3>Upvotes: {issue.upvotes.length}</h3>
-          <h3>Downvotes: {issue.downvotes.length}</h3> */}
         </Link>
         <ul className="votes">
           <li className="tooltip">
