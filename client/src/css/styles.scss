@@ -260,48 +260,36 @@ hr {
     display: flex;
     flex-direction: column;
     width: 100%;
-    .new-post-form {
-      display: flex;
-      width: 100%;
-      padding: 0 20px;
-      flex-direction: column;
-      align-items: center;
-      input[type=text] {
-        padding: 10px;
-        margin: 10px 0;
-        background: $clr-primary;
-        color: $font-descr;
-        width: 100%;
-      }
-      textarea {
-        padding: 10px;
-        margin: 10px 0;
-        background: $clr-primary;
-        color: $font-descr;
-        width: 100%;
-      }
-      hr {
-        width: 100%;
-        margin: 20px;
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(
-          to right, 
-          rgba(255, 255, 255, 0), 
-          rgba(255, 255, 255, 0.75), 
-          rgba(255, 255, 255, 0)
-        );
-      }
-      button {
-        background: $font-title;
-        color: $clr-primary;
-        padding: 10px;
-        border-radius: 20px;
-        font-size: 1rem;
-        font-weight: bold;
-        width: 90px;
-      }
-    }
+  }
+}
+.new-post-form {
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+  flex-direction: column;
+  align-items: center;
+  input[type=text] {
+    padding: 10px;
+    margin: 10px 0;
+    background: $clr-primary;
+    color: $font-descr;
+    width: 100%;
+  }
+  textarea {
+    padding: 10px;
+    margin: 10px 0;
+    background: $clr-primary;
+    color: $font-descr;
+    width: 100%;
+  }
+  button {
+    background: $font-title;
+    color: $clr-primary;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 90px;
   }
 }
 .issue-list {
@@ -336,15 +324,15 @@ hr {
 }
 .post-li {
   padding: 0 0 .5rem .5rem;
+  p {
+    font-size: .8rem;
+  }
   .issue-link {
     text-decoration: none;
     color: $font-descr;
     h1 {
       font-size: 2em;
       margin-bottom: .3em;
-    }
-    p {
-      font-size: .8rem;
     }
     .issue-title {
       font-size: 1.4rem;

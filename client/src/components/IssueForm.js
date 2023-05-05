@@ -52,7 +52,6 @@ export default function IssueForm(props) {
         rows={14}
         required
       />
-      <hr></hr>
       <button>Post</button>
     </form>
   )

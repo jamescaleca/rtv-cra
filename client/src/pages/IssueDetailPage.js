@@ -107,53 +107,40 @@ export default function IssueDetailPage() {
           >
             &larr; <span>Back to all issues</span>
           </Link>
-          <h4>{issue.title}</h4>
           <p>Posted by 
             <i>
               <Link 
                 to={`/user/${issue.username}`} 
                 state={{ user: issue.user }}
-              >
+                >
                 {` ${issue.username}`}
               </Link>
             </i>
           </p>
+          <h4>{issue.title}</h4>
           <p>Date posted: {
             new Date(issue.datePosted)
               .toLocaleString('en-us', {timeZone: timezone})
           }</p>
-          <hr />
           <p>{issue.description}</p>
+        
 
+          <form onSubmit={handleSubmit} className='new-post-form'>
+            <h3>Leave a comment as <i>{user.username}</i></h3>
+            <textarea 
+              name='description'
+              // value={description}
+              // onChange={handleChange}
+              placeholder='Write your well-informed comments here!'
+              rows={14}
+              required
+            />
+            <button>Post comment</button>
+          </form>
+          <hr />
           <Comments 
             comments={comments}
           />
-
-          {/* <h3>Comments</h3>
-          <div>
-            { 
-              issue.comments.length === 0 || issue.comments === undefined ?
-              <p>No comments on this post yet</p>
-            :
-              {mapComments} 
-            }
-          </div> */}
-
-          <form onSubmit={handleSubmit} id='new-comment-form'>
-            {/* <h3>Leave a comment as <i>{user.username}</i></h3> */}
-            {/* <input
-              type='text'
-              name='comment'
-              value={comment}
-              onChange={handleChange}
-              placeholder='Write your well-informed opinions here...'
-            />
-            <button>Comment</button> */}
-          </form>
-
-          {/* <ul id='comments-section'>
-            {newCommentsArray}
-          </ul> */}
         </div>
       
       }
