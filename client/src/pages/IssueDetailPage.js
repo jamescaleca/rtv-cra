@@ -99,7 +99,7 @@ export default function IssueDetailPage() {
       {!issue ? 
         <h1>Loading...</h1> 
         :
-        <div>
+        <>
           <Link
             to="../.."
             relative="path"
@@ -107,32 +107,33 @@ export default function IssueDetailPage() {
           >
             &larr; <span>Back to all issues</span>
           </Link>
-          <p>Posted by 
-            <i>
-              <Link 
-                to={`/user/${issue.username}`} 
-                state={{ user: issue.user }}
+          <div className="issue-title-desc">
+            <p className="p-bg">Posted by 
+              <i>
+                <Link 
+                  to={`/user/${issue.username}`} 
+                  state={{ user: issue.user }}
+                  className="username-small"
                 >
-                {` ${issue.username}`}
-              </Link>
-            </i>
-          </p>
-          <h4>{issue.title}</h4>
-          <p>Date posted: {
-            new Date(issue.datePosted)
-              .toLocaleString('en-us', {timeZone: timezone})
-          }</p>
-          <p>{issue.description}</p>
+                  {` ${issue.username} `}
+                </Link>
+              </i>
+              on {new Date(issue.datePosted)
+                .toLocaleString('en-us', {timeZone: timezone})
+              }
+            </p>
+            <h4>{issue.title}</h4>
+            <p className="issue-desc">{issue.description}</p>
+          </div>
         
-
           <form onSubmit={handleSubmit} className='new-post-form'>
-            <h3>Leave a comment as <i>{user.username}</i></h3>
+            <p>Leave a comment as <i>{user.username}</i></p>
             <textarea 
               name='description'
               // value={description}
               // onChange={handleChange}
               placeholder='Write your well-informed comments here!'
-              rows={14}
+              rows={8}
               required
             />
             <button>Post comment</button>
@@ -141,8 +142,7 @@ export default function IssueDetailPage() {
           <Comments 
             comments={comments}
           />
-        </div>
-      
+        </>
       }
     </div>
   )

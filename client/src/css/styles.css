@@ -47,6 +47,28 @@ hr {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
 }
 
+textarea {
+  padding: 10px;
+  margin-bottom: 0.8rem;
+  background: #c9e3f0;
+  color: #565360;
+  width: 100%;
+}
+textarea::-moz-placeholder {
+  color: #a9a6b5;
+}
+textarea::placeholder {
+  color: #a9a6b5;
+}
+
+.p-bg {
+  color: #a9a6b5;
+}
+
+.username-small {
+  font-weight: bold;
+}
+
 .navbar {
   color: #565360;
   display: flex;
@@ -217,18 +239,15 @@ hr {
 .new-post-form {
   display: flex;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 1rem;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1rem;
+}
+.new-post-form p {
+  font-size: 0.8rem;
 }
 .new-post-form input[type=text] {
-  padding: 10px;
-  margin: 10px 0;
-  background: #c9e3f0;
-  color: #908E9B;
-  width: 100%;
-}
-.new-post-form textarea {
   padding: 10px;
   margin: 10px 0;
   background: #c9e3f0;
@@ -238,11 +257,11 @@ hr {
 .new-post-form button {
   background: #565360;
   color: #c9e3f0;
-  padding: 10px;
+  padding: 0.3rem;
   border-radius: 20px;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: bold;
-  width: 90px;
+  width: 7rem;
 }
 
 .issue-list {
@@ -280,7 +299,7 @@ hr {
   padding: 0 0 0.5rem 0.5rem;
 }
 .post-li p {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 .post-li .issue-link {
   text-decoration: none;
@@ -318,6 +337,16 @@ hr {
 
 .issue-comments-page ul {
   margin-top: 1rem;
+}
+.issue-comments-page .issue-title-desc {
+  margin: 0.5rem;
+  line-height: 1.5rem;
+}
+.issue-comments-page .issue-title-desc p {
+  font-size: 0.85rem;
+}
+.issue-comments-page .issue-title-desc .issue-desc {
+  font-size: 1rem;
 }
 
 .profile {

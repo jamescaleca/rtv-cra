@@ -7,6 +7,7 @@ $clr-accent: #8739F9;
 
 $font-title: #565360;
 $font-descr: #908E9B; 
+$font-descr-bg: #a9a6b5;
 $font-disabled: #E1DFE9;
 
 $foreground: $clr-dark;
@@ -28,9 +29,10 @@ $nav-speed: 500ms;
   $clr-secondary: #192c2a;
   $clr-accent: #8739F9;
 
-  $font-title: #cdccce;
-  $font-descr: #a6a6a6; 
-  $font-disabled: #7a7a7a;
+  $font-title: #d8d8d8;
+  $font-descr: #b9b9b9; 
+  $font-descr-bg: #8b8b8b;
+  $font-disabled: #6b6b6b;
 
   $foreground: $clr-light;
   $background: $clr-dark;
@@ -89,6 +91,25 @@ hr {
     rgba(255, 255, 255, 0.75), 
     rgba(255, 255, 255, 0)
   );
+}
+
+textarea {
+  padding: 10px;
+  margin-bottom: .8rem;
+  background: $clr-primary;
+  color: $font-title;
+  width: 100%;
+  &::placeholder {
+    color: $font-descr-bg;
+  }
+}
+
+.p-bg {
+  color: $font-descr-bg;
+}
+
+.username-small {
+  font-weight: bold;
 }
 
 .navbar {
@@ -265,17 +286,15 @@ hr {
 .new-post-form {
   display: flex;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 1rem;
   flex-direction: column;
   align-items: center;
-  input[type=text] {
-    padding: 10px;
-    margin: 10px 0;
-    background: $clr-primary;
-    color: $font-descr;
-    width: 100%;
+  margin-bottom: 1rem;
+  p {
+    font-size: .8rem;
+    
   }
-  textarea {
+  input[type=text] {
     padding: 10px;
     margin: 10px 0;
     background: $clr-primary;
@@ -285,11 +304,11 @@ hr {
   button {
     background: $font-title;
     color: $clr-primary;
-    padding: 10px;
+    padding: .3rem;
     border-radius: 20px;
-    font-size: 1rem;
+    font-size: .8rem;
     font-weight: bold;
-    width: 90px;
+    width: 7rem;
   }
 }
 .issue-list {
@@ -325,7 +344,7 @@ hr {
 .post-li {
   padding: 0 0 .5rem .5rem;
   p {
-    font-size: .8rem;
+    font-size: .9rem;
   }
   .issue-link {
     text-decoration: none;
@@ -376,6 +395,16 @@ hr {
 .issue-comments-page {
   ul {
     margin-top: 1rem;
+  }
+  .issue-title-desc {
+    margin: .5rem;
+    line-height: 1.5rem;
+    p {
+      font-size: .85rem;
+    }
+    .issue-desc {
+      font-size: 1rem;
+    }
   }
 }
 .profile {
