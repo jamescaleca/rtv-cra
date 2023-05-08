@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import {useNavigation} from "react-router-dom"
 import axios from 'axios'
 
 const UserContext = React.createContext()
@@ -24,8 +25,11 @@ export default function UserProvider(props) {
   const [publicIssues, setPublicIssues] = useState([])
   const [issue, setIssue] = useState(null)
   const [comments, setComments] = useState([])
+  const [status, setStatus] = useState("idle")
 
   const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+  // const navigation = useNavigation()
 
   let darkMode = localStorage.getItem("darkMode")
   // const darkModeToggle = document.querySelector("#dark-mode-toggle")
@@ -68,25 +72,25 @@ export default function UserProvider(props) {
         }))
       })
       .catch(err => handleAuthError(err.response.data.errMsg))
-      // .then(res => console.log(res))
-      // .catch(err => console.log(err))
+      .finally(() => setStatus("idle"))
   }
 
   function login(credentials) {
     axios.post('/auth/login', credentials)
       .then(res => {
-          const { user, token } = res.data
-          console.log(res.data)
-          localStorage.setItem('token', token)
-          localStorage.setItem('user', JSON.stringify(user))
-          getUserIssues()
-          setUserState(prevUserState => ({
-            ...prevUserState,
-            user,
-            token
-          }))
+        const { user, token } = res.data
+        console.log(res.data)
+        localStorage.setItem('token', token)
+        localStorage.setItem('user', JSON.stringify(user))
+        getUserIssues(user._id)
+        setUserState(prevUserState => ({
+          ...prevUserState,
+          user,
+          token
+        }))
       })
       .catch(err => handleAuthError(err.response.data.errMsg))
+      .finally(() => setStatus("idle"))
   }
 
   function logout() {
@@ -280,7 +284,9 @@ export default function UserProvider(props) {
         userAxios,
         darkMode, 
         darkModeToggle,
-        timezone
+        timezone,
+        status,
+        setStatus
       }}
     >
       { props.children }

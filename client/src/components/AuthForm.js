@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../context/UserProvider'
 import '../css/styles.css'
 
 export default function AuthForm(props) {
@@ -12,6 +13,8 @@ export default function AuthForm(props) {
       password
     }
   } = props
+
+  const { status } = useContext(UserContext)
 
   return (
     <form id='auth-form' onSubmit={handleSubmit}>
@@ -29,7 +32,13 @@ export default function AuthForm(props) {
         onChange={handleChange}
         placeholder='Password'
       />
-      <button>{ btnText }</button>
+      <button disabled={status === "submitting"}
+      >
+        { status === "submitting" 
+          ? "Submitting..." 
+          : btnText 
+        }
+      </button>
       <p style={{color: 'red'}}>{ errMsg }</p>
     </form>
   )

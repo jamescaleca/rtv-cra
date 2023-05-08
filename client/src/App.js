@@ -27,7 +27,7 @@ function App() {
             />
             <Route 
               path="/login"
-              element={<Login />}
+              element={token ? <Navigate to="/" /> : <Login />}
             />
             <Route 
               path='/issues/:issueId'

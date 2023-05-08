@@ -489,18 +489,20 @@ textarea {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
   h1 {
     font-size: 2em;
     margin: 24px;
   }
   p {
-    margin: 16px;
+    margin: .5rem;
+    font-size: .9rem;
+    text-align: center;
     text-decoration: underline;
   }
   form {
     border: 1px solid;
     padding: 20px;
+    width: 18rem;
     border-radius: 5px;
     background-color: $clr-primary;
     display: flex;

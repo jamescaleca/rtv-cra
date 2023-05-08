@@ -420,19 +420,21 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
 }
 .auth-container h1 {
   font-size: 2em;
   margin: 24px;
 }
 .auth-container p {
-  margin: 16px;
+  margin: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
   text-decoration: underline;
 }
 .auth-container form {
   border: 1px solid;
   padding: 20px;
+  width: 18rem;
   border-radius: 5px;
   background-color: #c9e3f0;
   display: flex;
