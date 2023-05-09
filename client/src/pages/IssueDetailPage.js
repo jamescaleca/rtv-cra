@@ -1,104 +1,55 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../context/UserProvider'
 import { useParams, Link } from 'react-router-dom'
 import Comments from '../components/Comments'
 import '../css/styles.css'
 
+const initInputs = { comment: "" }
+
 export default function IssueDetailPage() {
-  const { userAxios, 
-    getAllComments, 
-    issues, 
+  const {
+    getAllComments,
     getIssueById, 
     issue,
-    setIssue, 
     user, 
-    userState, 
-    setUserState, 
+    token,
     comments, 
-    setComments,
+    addComment,
     timezone
   } = useContext(UserContext)
 
+  const [inputs, setInputs] = useState(initInputs)
+
   const { issueId } = useParams()
-  console.log(issue)
   
+  const { comment } = inputs
+
   // const { title, description, _id, user, username } = props.location.state
 
   useEffect(() => {
     getIssueById(issueId)
     getAllComments(issueId)
-  }, [])
+  }, [issueId])
 
-
-  function addComment(newComment, issueId) {
-    userAxios.post(`/comments/${issueId}`, newComment)
-      .then(res => setUserState(prevState => ({
-        ...prevState,
-        issues: prevState.issues.map(issue => 
-          issueId === issue._id ? 
-          {...issue, comments: [...issue.comments, newComment]} : 
-          issue
-        )
-      })))
-      .catch(err => console.log(err.response.data.errMsg))
-    return getAllComments(issueId)
+  function handleChange(e) {
+    const {name, value} = e.target
+    setInputs(prevInputs => ({
+      ...prevInputs,
+      [name]: value
+    }))
   }
-
-
-  // const initInputs = {
-  //   comment: '',
-  //   user: user || '',
-  //   username: username || '',
-  //   _id: _id || ''
-  // }
-
-  // const [inputs, setInputs] = useState(initInputs)
-
-  // const currentIssue = issues.find(issue => (issue._id === _id))
-  // const newCommentsArray = currentIssue.comments.map(comment => (
-  //   <>
-  //     <li>
-  //       <p>{comment.comment}</p>
-  //       <p>{comment.user}</p>
-  //     </li>
-  //     <hr />
-  //   </>
-  // ))
-
-  // const mapComments = issue.comments.map(comment => (
-  //   <ul>
-  //     <li>
-  //       <p>{comment.comment}</p>
-  //       <p>{comment.user}</p>
-  //     </li>
-  //   </ul>
-  // ))
-
-  // function handleChange(e) {
-  //   const {name, value} = e.target
-  //   setInputs(prevInputs => ({
-  //     ...prevInputs,
-  //     [name]: value
-  //   }))
-  // }
 
   function handleSubmit(e) {
     e.preventDefault()
-    // addComment(inputs, _id)
-    // setInputs(initInputs)
-    // getAllComments(_id)
+    addComment(inputs, issueId)
+    setInputs(initInputs)
+    getAllComments(issueId)
   }
-
-
-  // const { comment } = inputs
-
-  // console.log(issue.comments.length)
 
   return (
     <div className='issue-comments-page'>
       {!issue ? 
-        <h1>Loading...</h1> 
-        :
+        <h1>Loading...</h1> :
         <>
           <Link
             to="../.."
@@ -125,19 +76,23 @@ export default function IssueDetailPage() {
             <h4>{issue.title}</h4>
             <p className="issue-desc">{issue.description}</p>
           </div>
-        
-          <form onSubmit={handleSubmit} className='new-post-form'>
-            <p>Leave a comment as <i>{user.username}</i></p>
-            <textarea 
-              name='description'
-              // value={description}
-              // onChange={handleChange}
-              placeholder='Write your well-informed comments here!'
-              rows={8}
-              required
-            />
-            <button>Post comment</button>
-          </form>
+          {token ? 
+            <form onSubmit={handleSubmit} className='new-post-form'>
+              <p>Leave a comment as <i>{user.username}</i></p>
+              <textarea 
+                name='comment'
+                value={comment}
+                onChange={handleChange}
+                placeholder='Write your well-informed comments here!'
+                rows={8}
+                required
+              />
+              <button>Post comment</button>
+            </form> :
+            <p style={{ "padding": "1rem 0", "text-align": "center" }}>
+              Sign in to post a comment
+            </p>
+          }
           <hr />
           <Comments 
             comments={comments}

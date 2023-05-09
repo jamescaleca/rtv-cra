@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import {useNavigation} from "react-router-dom"
 import axios from 'axios'
 
 const UserContext = React.createContext()
@@ -33,7 +32,7 @@ export default function UserProvider(props) {
 
   let darkMode = localStorage.getItem("darkMode")
   // const darkModeToggle = document.querySelector("#dark-mode-toggle")
-  console.log(darkMode)
+  // console.log(darkMode)
 
   const enableDarkMode = () => {
     document.body.classList.add("darkmode")
@@ -177,14 +176,10 @@ export default function UserProvider(props) {
   // ADD A COMMENT
   function addComment(newComment, issueId) {
     userAxios.post(`/comments/${issueId}`, newComment)
-      .then(res => setUserState(prevState => ({
-        ...prevState,
-        issues: prevState.issues.map(issue => 
-          issueId === issue._id ? 
-          {...issue, comments: [...issue.comments, newComment]} : 
-          issue
-        )
-      })))
+      .then(res => { console.log(res.data)
+        setComments(prevComments => ({
+          comments: [...prevComments, res.data]
+      }))})
       .catch(err => console.log(err.response.data.errMsg))
     return getAllComments(issueId)
   }

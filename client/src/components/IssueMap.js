@@ -21,8 +21,6 @@ export default function IssueMap(props) {
 
   function toggle(){setEditToggle(prevToggle => !prevToggle)}
 
-  console.log(timezone)
-
   const mapIssues = [].concat(issues)
     .sort((a, b) => b.votesTotal - a.votesTotal)
     .map((issue) => 
