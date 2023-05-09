@@ -201,7 +201,7 @@ textarea {
     padding: 0 1rem;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     svg {
@@ -209,14 +209,14 @@ textarea {
       width: 20px;
     }
     .nav-item {
-      width: calc($nav-size * 0.8);
+      width: auto;
       display: flex;
       align-items: center;
       justify-content: center;
       border: $font-title;
       .icon-button {
-        $button-size: calc($nav-size * 1);
-        width: $button-size;
+        // $button-size: calc($nav-size * 1);
+        width: auto;
         background-color: $main-primary;
         border-radius: 10px;
         padding: 8px;
@@ -228,6 +228,7 @@ textarea {
         svg {
           fill: $font-title;
           width: 15px;
+          padding-left: .2rem;
         }
       }
       

@@ -16,7 +16,7 @@ export default function Comments(props) {
           </li>
         ))}
       </ul> :
-      <p style={{ "padding": "1rem 0", "text-align": "center" }}>
+      <p style={{ "padding": "1rem 0", "textAlign": "center" }}>
         No comments here yet
       </p>
       }

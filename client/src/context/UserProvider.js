@@ -194,7 +194,7 @@ export default function UserProvider(props) {
           issue._id !== issueId ? issue : res.data)}))
         )
       .catch(err => console.log(err))
-    return getUserIssues()
+    return getUserIssues(userState.user._id)
   }
 
   //UPVOTE ISSUE
@@ -241,7 +241,7 @@ export default function UserProvider(props) {
         issues: prevState.issues.filter(issue => issue._id !== issueId)
       })))
       .catch(err => console.log(err))
-    return getUserIssues()
+    return getUserIssues(userState.user._id)
   }
 
   // const history = useHistory()

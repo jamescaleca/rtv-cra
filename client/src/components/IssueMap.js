@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { Link, useLocation } from 'react-router-dom'
+import IssueForm from "./IssueForm"
 import { UserContext } from '../context/UserProvider'
 import UpvoteIcon from '../assets/icons/arrow-alt-square-up-regular.svg'
 import DownvoteIcon from '../assets/icons/arrow-square-down-regular.svg'
@@ -9,6 +10,7 @@ export default function IssueMap(props) {
     upvoteIssue,
     downvoteIssue,
     editIssue,
+    addIssue,
     deleteIssue,
     token,
     username,
@@ -16,6 +18,7 @@ export default function IssueMap(props) {
    } = useContext(UserContext)
   const [editToggle, setEditToggle] = useState(false)
   const { issues } = props
+  console.log(issues)
 
   const { pathname } = useLocation()
 
@@ -84,27 +87,45 @@ export default function IssueMap(props) {
             }
           </p>
         </Link>
-        <ul className="votes">
-          <li className="tooltip">
-            <span className="tooltiptext">Upvotes: {issue.upvotes.length}</span>
-            <img 
-              className='upvote'
-              alt='upvote' 
-              src={UpvoteIcon} 
-            />
-          </li>
-          <li>
-            <h3>{issue.votesTotal}</h3>
-          </li>
-          <li className="tooltip">
-            <span className="tooltiptext">Downvotes: {issue.downvotes.length}</span>
-            <img 
-              className='downvote'
-              alt='downvote' 
-              src={DownvoteIcon} 
-            />
-          </li>
-        </ul>
+        <div className="post-buttons">
+          <ul className="votes">
+            <li className="tooltip">
+              <span className="tooltiptext">Upvotes: {issue.upvotes.length}</span>
+              <img 
+                className='upvote'
+                alt='upvote' 
+                src={UpvoteIcon} 
+              />
+            </li>
+            <li>
+              <h3>{issue.votesTotal}</h3>
+            </li>
+            <li className="tooltip">
+              <span className="tooltiptext">Downvotes: {issue.downvotes.length}</span>
+              <img 
+                className='downvote'
+                alt='downvote' 
+                src={DownvoteIcon} 
+              />
+            </li>
+          </ul>
+          <ul className="edit-delete-btns">
+            <li><button onClick={() => toggle()}>Edit</button></li>
+            <li><button onClick={() => deleteIssue(issue._id)}>Delete</button></li>
+          </ul>
+        </div>
+        {editToggle === true ?
+          <IssueForm 
+            _id={issue._id}
+            title={issue.title}
+            description={issue.description}
+            submit={editIssue}
+            toggle={toggle}
+            editToggle={editToggle}
+          />
+          :
+          null
+        }
         <hr />
       </li>
     ) 

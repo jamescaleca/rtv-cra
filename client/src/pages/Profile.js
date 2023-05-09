@@ -13,7 +13,6 @@ export default function Profile() {
     getUserIssues,
     deleteIssue,
     editIssue,
-    
   } = useContext(UserContext)
 
   useEffect(() => {
@@ -29,7 +28,11 @@ export default function Profile() {
       <IssueForm /> */}
 
       <h2>😎 Your Issues 😎</h2>
-      <IssueMap issues={issues} />
+
+      {issues.length > 0 ? 
+        <IssueMap issues={issues} /> :
+        <h4 style={{ "margin": "2rem"}}>You haven't posted any issues yet</h4> 
+      }
       {/* <IssueList 
         issues={issues}
         deleteIssue={deleteIssue}

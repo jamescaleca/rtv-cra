@@ -26,33 +26,60 @@ export default function IssueForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault()
-    editToggle ? 
-    editIssue(inputs, props._id) :
     addIssue(inputs, props._id)
     setInputs(initInputs)
     navigate("/")
   }
 
+  function handleEdit(e) {
+    e.preventDefault()
+    editIssue(inputs, props._id)
+    toggle()
+    navigate("/profile")
+  }
 
   return (
-    <form className="new-post-form" onSubmit={handleSubmit}>
-      <input 
-        type='text'
-        name='title'
-        value={title}
-        onChange={handleChange}
-        placeholder='Title'
-        required
-      />
-      <textarea 
-        name='description'
-        value={description}
-        onChange={handleChange}
-        placeholder='Description'
-        rows={14}
-        required
-      />
-      <button>Post</button>
-    </form>
+    <>
+      {editToggle ?  
+        <form className="new-post-form" onSubmit={handleEdit}>
+          <input 
+            type='text'
+            name='title'
+            value={title}
+            onChange={handleChange}
+            placeholder='Title'
+            required
+          />
+          <textarea 
+            name='description'
+            value={description}
+            onChange={handleChange}
+            placeholder='Description'
+            rows={14}
+            required
+          />
+          <button>Done editing</button>
+        </form> :
+        <form className="new-post-form" onSubmit={handleSubmit}>
+          <input 
+            type='text'
+            name='title'
+            value={title}
+            onChange={handleChange}
+            placeholder='Title'
+            required
+          />
+          <textarea 
+            name='description'
+            value={description}
+            onChange={handleChange}
+            placeholder='Description'
+            rows={14}
+            required
+          />
+          <button>Post</button>
+        </form> 
+      }
+    </>
   )
 }
