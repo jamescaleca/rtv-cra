@@ -33,6 +33,7 @@ export default function UserProvider(props) {
 
   let darkMode = localStorage.getItem("darkMode")
   // const darkModeToggle = document.querySelector("#dark-mode-toggle")
+  console.log(darkMode)
 
   const enableDarkMode = () => {
     document.body.classList.add("darkmode")

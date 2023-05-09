@@ -22,10 +22,10 @@ export default function Navbar(props) {
               <DropdownMenu></DropdownMenu>
             </NavItem>
             {/* <LightDarkBtn /> */}
-            <CircleIcon 
+            {/* <CircleIcon 
               onClick={darkModeToggle}
               id="dark-mode-toggle"
-            />
+            /> */}
           </ul>
         </nav> 
       :
@@ -33,10 +33,10 @@ export default function Navbar(props) {
           <ul className="navbar-nav">
             <NavLinks />
             {/* <LightDarkBtn /> */}
-            <CircleIcon 
+            {/* <CircleIcon 
               onClick={darkModeToggle}
               id="dark-mode-toggle"
-            />
+            /> */}
           </ul>
         </nav>
       }

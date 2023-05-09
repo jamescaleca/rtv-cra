@@ -1,17 +1,25 @@
-$clr-dark: #171717;
-$clr-light: #dfe6ea;
+// $clr-dark: #2a2a2a;
+// $clr-light: #dfe6ea;
 
-$clr-primary: #c9e3f0;
-$clr-secondary: #95a7af;
-$clr-accent: #8739F9;
+// $clr-primary: #1f5662;
+// $clr-secondary: #192c2a;
+// $clr-accent: #8739F9;
 
-$font-title: #565360;
-$font-descr: #908E9B; 
-$font-descr-bg: #a9a6b5;
-$font-disabled: #E1DFE9;
+$main-primary: #8739F9;
+$main-secondary: #C651CD;
+$main-tertiary: #363636;
 
-$foreground: $clr-dark;
-$background: $clr-light;
+$dark-primary: #100F10;
+$dark-secondary: #1B1B1B;
+$dark-tertiary: #242424;
+
+$font-title: rgba(#fff, 0.96);
+$font-descr: rgba(#fff, 0.67); 
+$font-descr-bg: rgba(#fff, 0.45);
+$font-disabled: #6b6b6b;
+
+$foreground: $font-title;
+$background: $dark-primary;
 
 $nav-bg:  #242526;
 $nav-bg-accent: #484a4d;
@@ -21,23 +29,6 @@ $nav-border: 1px solid #474a4d;
 $nav-border-radius: 8px;
 $nav-speed: 500ms; 
 
-.darkmode {
-  $clr-dark: #2a2a2a;
-  $clr-light: #dfe6ea;
-
-  $clr-primary: #1f5662;
-  $clr-secondary: #192c2a;
-  $clr-accent: #8739F9;
-
-  $font-title: #d8d8d8;
-  $font-descr: #b9b9b9; 
-  $font-descr-bg: #8b8b8b;
-  $font-disabled: #6b6b6b;
-
-  $foreground: $clr-light;
-  $background: $clr-dark;
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -45,12 +36,29 @@ $nav-speed: 500ms;
   font-family: sans-serif;
 }
 
+// .darkmode {
+//   $clr-dark: #2a2a2a;
+//   $clr-light: #dfe6ea;
+
+//   $clr-primary: #1f5662;
+//   $clr-secondary: #192c2a;
+//   $clr-accent: #8739F9;
+
+//   $font-title: #d8d8d8;
+//   $font-descr: #b9b9b9; 
+//   $font-descr-bg: #8b8b8b;
+//   $font-disabled: #6b6b6b;
+
+//   $foreground: $clr-light;
+//   $background: $clr-dark;
+// }
+
 body {
   margin: 0;
   background: $background;
   display: flex;
   flex-direction: column;
-  color: $font-title;
+  color: $foreground;
   padding-bottom: 3rem;
   font-family: roboto;
   -webkit-font-smoothing: antialiased;
@@ -96,7 +104,7 @@ hr {
 textarea {
   padding: 10px;
   margin-bottom: .8rem;
-  background: $clr-primary;
+  background: $dark-secondary;
   color: $font-title;
   width: 100%;
   &::placeholder {
@@ -118,7 +126,7 @@ textarea {
   justify-content: space-around;
   align-items: center;
   height: $nav-size;
-  background: $clr-secondary;
+  background: $background;
   border-bottom: $foreground;
   padding: 1rem 1rem;
   a {
@@ -126,8 +134,9 @@ textarea {
     color: $font-title;
   }
   button {
-    background-color: $clr-primary;
+    background-color: $dark-secondary;
     color: firebrick;
+    font-weight: bold;
     padding: 3px 8px;
   }
   .darkmode-button {
@@ -208,7 +217,7 @@ textarea {
       .icon-button {
         $button-size: calc($nav-size * 1);
         width: $button-size;
-        background-color: $clr-secondary;
+        background-color: $main-primary;
         border-radius: 10px;
         padding: 8px;
         margin: 2px;
@@ -230,7 +239,7 @@ textarea {
         position: absolute;
         top: 2rem;
         transform: translateX(-45%);
-        background-color: $clr-secondary;
+        background-color: $dark-secondary;
         border: $nav-border;
         border-radius: $nav-border-radius;
         padding: .8rem;
@@ -297,13 +306,16 @@ textarea {
   input[type=text] {
     padding: 10px;
     margin: 10px 0;
-    background: $clr-primary;
-    color: $font-descr;
+    background: $dark-secondary;
+    color: $font-title;
     width: 100%;
+    &::placeholder {
+      color: $font-descr-bg;
+    }
   }
   button {
-    background: $font-title;
-    color: $clr-primary;
+    background: $dark-tertiary;
+    color: $main-secondary;
     padding: .3rem;
     border-radius: 20px;
     font-size: .8rem;
@@ -394,7 +406,7 @@ textarea {
 }
 .issue-comments-page {
   ul {
-    margin-top: 1rem;
+    margin-top: .5rem;
   }
   .issue-title-desc {
     margin: .5rem;
@@ -475,7 +487,7 @@ textarea {
     flex-direction: column;
     margin: 16px 0;
     border: 1px solid;
-    background-color: $clr-primary;
+    background-color: $dark-secondary;
     padding: 16px;
     border-radius: 5px;
     input, button {
@@ -504,7 +516,7 @@ textarea {
     padding: 20px;
     width: 18rem;
     border-radius: 5px;
-    background-color: $clr-primary;
+    background-color: $dark-secondary;
     display: flex;
     flex-direction: column;
     input {

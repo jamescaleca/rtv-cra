@@ -9,7 +9,7 @@ export default function NavLinks() {
   const activeStyle = {
     fontWeight: "bold",
     textDecoration: "underline",
-    color: "red"
+    color: "#C651CD"
   }
 
   return(

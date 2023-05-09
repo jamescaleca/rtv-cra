@@ -7,10 +7,10 @@
 
 body {
   margin: 0;
-  background: #dfe6ea;
+  background: #100F10;
   display: flex;
   flex-direction: column;
-  color: #565360;
+  color: rgba(255, 255, 255, 0.96);
   padding-bottom: 3rem;
   font-family: roboto;
   -webkit-font-smoothing: antialiased;
@@ -22,7 +22,7 @@ code {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #565360;
+  color: rgba(255, 255, 255, 0.96);
 }
 
 ul {
@@ -32,12 +32,12 @@ ul {
 }
 
 a {
-  color: #908E9B;
+  color: rgba(255, 255, 255, 0.67);
   text-decoration: none;
 }
 
 p {
-  color: #908E9B;
+  color: rgba(255, 255, 255, 0.67);
 }
 
 hr {
@@ -50,19 +50,19 @@ hr {
 textarea {
   padding: 10px;
   margin-bottom: 0.8rem;
-  background: #c9e3f0;
-  color: #565360;
+  background: #1B1B1B;
+  color: rgba(255, 255, 255, 0.96);
   width: 100%;
 }
 textarea::-moz-placeholder {
-  color: #a9a6b5;
+  color: rgba(255, 255, 255, 0.45);
 }
 textarea::placeholder {
-  color: #a9a6b5;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .p-bg {
-  color: #a9a6b5;
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .username-small {
@@ -70,22 +70,23 @@ textarea::placeholder {
 }
 
 .navbar {
-  color: #565360;
+  color: rgba(255, 255, 255, 0.96);
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 60px;
-  background: #95a7af;
-  border-bottom: #171717;
+  background: #100F10;
+  border-bottom: rgba(255, 255, 255, 0.96);
   padding: 1rem 1rem;
 }
 .navbar a {
   text-decoration: none;
-  color: #565360;
+  color: rgba(255, 255, 255, 0.96);
 }
 .navbar button {
-  background-color: #c9e3f0;
+  background-color: #1B1B1B;
   color: firebrick;
+  font-weight: bold;
   padding: 3px 8px;
 }
 .navbar .darkmode-button {
@@ -153,7 +154,7 @@ textarea::placeholder {
   width: 100%;
 }
 .navbar .navbar-nav svg {
-  fill: #171717;
+  fill: rgba(255, 255, 255, 0.96);
   width: 20px;
 }
 .navbar .navbar-nav .nav-item {
@@ -161,11 +162,11 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: #565360;
+  border: rgba(255, 255, 255, 0.96);
 }
 .navbar .navbar-nav .nav-item .icon-button {
   width: 60px;
-  background-color: #95a7af;
+  background-color: #8739F9;
   border-radius: 10px;
   padding: 8px;
   margin: 2px;
@@ -175,7 +176,7 @@ textarea::placeholder {
   transition: filter 300ms;
 }
 .navbar .navbar-nav .nav-item .icon-button svg {
-  fill: #565360;
+  fill: rgba(255, 255, 255, 0.96);
   width: 15px;
 }
 .navbar .navbar-nav .nav-item .icon-button:hover {
@@ -185,7 +186,7 @@ textarea::placeholder {
   position: absolute;
   top: 2rem;
   transform: translateX(-45%);
-  background-color: #95a7af;
+  background-color: #1B1B1B;
   border: 1px solid #474a4d;
   border-radius: 8px;
   padding: 0.8rem;
@@ -250,13 +251,19 @@ textarea::placeholder {
 .new-post-form input[type=text] {
   padding: 10px;
   margin: 10px 0;
-  background: #c9e3f0;
-  color: #908E9B;
+  background: #1B1B1B;
+  color: rgba(255, 255, 255, 0.96);
   width: 100%;
 }
+.new-post-form input[type=text]::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+.new-post-form input[type=text]::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
 .new-post-form button {
-  background: #565360;
-  color: #c9e3f0;
+  background: #242424;
+  color: #C651CD;
   padding: 0.3rem;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -303,7 +310,7 @@ textarea::placeholder {
 }
 .post-li .issue-link {
   text-decoration: none;
-  color: #908E9B;
+  color: rgba(255, 255, 255, 0.67);
 }
 .post-li .issue-link h1 {
   font-size: 2em;
@@ -323,7 +330,7 @@ textarea::placeholder {
 }
 .post-li .votes h3 {
   margin: 0 1rem;
-  color: #565360;
+  color: rgba(255, 255, 255, 0.96);
 }
 .post-li .votes .upvote {
   filter: invert(65%) sepia(9%) saturate(6603%) hue-rotate(1deg) brightness(104%) contrast(102%);
@@ -336,7 +343,7 @@ textarea::placeholder {
 }
 
 .issue-comments-page ul {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 .issue-comments-page .issue-title-desc {
   margin: 0.5rem;
@@ -356,7 +363,7 @@ textarea::placeholder {
   align-items: center;
 }
 .profile h1 {
-  color: #565360;
+  color: rgba(255, 255, 255, 0.96);
   font-size: 3em;
 }
 .profile #profile-page-title {
@@ -388,7 +395,7 @@ textarea::placeholder {
   margin-bottom: 0.3em;
 }
 .profile #profile-issue-list .profile-issue-li a p {
-  color: #908E9B;
+  color: rgba(255, 255, 255, 0.67);
 }
 .profile #profile-issue-list .profile-issue-li img {
   width: 20px;
@@ -406,7 +413,7 @@ textarea::placeholder {
   flex-direction: column;
   margin: 16px 0;
   border: 1px solid;
-  background-color: #c9e3f0;
+  background-color: #1B1B1B;
   padding: 16px;
   border-radius: 5px;
 }
@@ -436,7 +443,7 @@ textarea::placeholder {
   padding: 20px;
   width: 18rem;
   border-radius: 5px;
-  background-color: #c9e3f0;
+  background-color: #1B1B1B;
   display: flex;
   flex-direction: column;
 }

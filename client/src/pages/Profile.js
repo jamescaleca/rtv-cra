@@ -23,10 +23,10 @@ export default function Profile() {
   return (
     <div className='profile'>
       
-      <div id='add-issue-txt'>
+      {/* <div id='add-issue-txt'>
         <h3>Add an Issue</h3>
       </div>
-      <IssueForm />
+      <IssueForm /> */}
 
       <h2>😎 Your Issues 😎</h2>
       <IssueMap issues={issues} />
