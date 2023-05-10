@@ -11,7 +11,7 @@ export default function Public(){
 
   useEffect(() => {
     getAllIssues()
-  }, [])
+  })
 
   return (
     <div className="public">
@@ -20,7 +20,7 @@ export default function Public(){
         <div className='nothing-here'>
           <h1>Oops!</h1>
           <p>Looks like there's nothing here.</p>
-          <img src={Patrick}></img>
+          <img alt="patrick" src={Patrick}></img>
         </div>
         :
         <IssueMap 

@@ -556,3 +556,11 @@ textarea {
 .tooltiptext {
   visibility: visible;
 }
+
+@media screen and (min-width: 770px) {
+  .navbar {
+    .navbar-nav {
+      justify-content: space-around;
+    }
+  }
+}

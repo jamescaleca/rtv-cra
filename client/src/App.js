@@ -4,7 +4,6 @@ import Login from "./pages/Login"
 import Profile from './pages/Profile'
 import Public from './pages/Public'
 import Post from './pages/Post'
-import IssueList from './components/IssueList'
 import IssueDetailPage from './pages/IssueDetailPage'
 import OtherUserProfile from './pages/OtherUserProfile'
 import NotFound from './pages/NotFound'
@@ -14,7 +13,7 @@ import { UserContext } from './context/UserProvider'
 import './css/styles.css'
 
 function App() {
-  const { token, user } = useContext(UserContext)
+  const { token } = useContext(UserContext)
 
   return (
     <div className="app">

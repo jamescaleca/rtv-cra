@@ -8,7 +8,6 @@ const initInputs = {username: '', password: ''}
 export default function Login() {
   const [toggle, setToggle] = useState(false)
   const [inputs, setInputs] = useState(initInputs)
-  const [error, setError] = useState(null)
 
   const { 
     errMsg, 

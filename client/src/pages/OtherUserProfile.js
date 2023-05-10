@@ -1,13 +1,11 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useParams, useLocation } from "react-router-dom"
 import axios from "axios"
 import IssueMap from "../components/IssueMap"
-import { UserContext } from "../context/UserProvider"
 
 export default function OtherUserProfile() {
   const { username } = useParams()
   const location = useLocation()
-  const [user, setUser] = useState(null)
   const [otherUserIssues, setOtherUserIssues] = useState([])
 
   function getOtherUserIssues(userId) {

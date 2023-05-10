@@ -1,23 +1,18 @@
 import React, { useContext, useEffect } from 'react'
-import IssueForm from '../components/IssueForm'
 import IssueMap from "../components/IssueMap"
-import IssueList from '../components/IssueList'
 import { UserContext } from '../context/UserProvider'
 import '../css/styles.css'
 
 export default function Profile() {
   const {
     issues,
-    user: { username, _id },
-    token,
+    user: { _id },
     getUserIssues,
-    deleteIssue,
-    editIssue,
   } = useContext(UserContext)
 
   useEffect(() => {
     getUserIssues(_id)
-  }, [])
+  }, [getUserIssues, _id])
   
   return (
     <div className='profile'>

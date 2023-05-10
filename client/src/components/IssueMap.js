@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState } from "react"
 import { Link, useLocation } from 'react-router-dom'
 import IssueForm from "./IssueForm"
 import { UserContext } from '../context/UserProvider'
@@ -10,10 +10,7 @@ export default function IssueMap(props) {
     upvoteIssue,
     downvoteIssue,
     editIssue,
-    addIssue,
     deleteIssue,
-    token,
-    username,
     timezone
    } = useContext(UserContext)
   const [editToggle, setEditToggle] = useState(false)
