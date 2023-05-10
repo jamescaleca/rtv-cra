@@ -4,6 +4,7 @@ require('dotenv').config()
 const morgan = require('morgan')
 const mongoose = require('mongoose')
 const {expressjwt: jwt} = require('express-jwt')
+const path = require("path")
 
 // const port = process.env.PORT || 9000;
 
@@ -15,6 +16,8 @@ app.use(morgan('dev'))
 mongoose.connect("mongodb://localhost:27017/rtv", 
   () => console.log('connected to database')
 )
+
+app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.use(
   '/auth', 
@@ -50,6 +53,10 @@ app.use((err, req, res, next) => {
   }
   return res.send({errMsg: err.message})
 })
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(9000, () => {
   console.log("Server is running on port 9000")
