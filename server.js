@@ -24,6 +24,16 @@ mongoose.connect(uri, {
   useFindAndModify: false
 }, () => console.log('connected to database'))
 
+// mongoose.connect('mongodb://localhost:27017/rtv',
+// {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+// },
+// () => console.log('Connected to the DB')
+// )
+
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.use(
@@ -43,13 +53,13 @@ app.use(
 
 app.use(
   '/issues',
-  jwt({ secret: `${process.env.REACT_APP_SECRET}`, algorithms: ['HS256']}),
+  jwt({ secret: process.env.REACT_APP_SECRET, algorithms: ['HS256'] }),
   require('./routes/protectedIssueRouter.js')
 )
 
 app.use(
   '/comments',
-  jwt({ secret: `${process.env.REACT_APP_SECRET}`, algorithms: ['HS256']}),
+  jwt({ secret: process.env.REACT_APP_SECRET, algorithms: ['HS256'] }),
   require('./routes/protectedCommentRouter.js')
 )
 
