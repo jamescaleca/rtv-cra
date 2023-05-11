@@ -12,14 +12,17 @@ const secret = process.env.REACT_APP_SECRET
 
 const pw = process.env.REACT_APP_MONGODB_SECRET
 
-const uri = `mongodb+srv://jacaleca2:${pw}@rtv-render.5rltqvb.mongodb.net/?retryWrites=true&w=majority`
+const uri = `mongodb+srv://jacaleca2:${process.env.REACT_APP_MONGODB_SECRET}@rtv-render.5rltqvb.mongodb.net/?retryWrites=true&w=majority`
 
 app.use(express.json())
 app.use(morgan('dev'))
 
-mongoose.connect(uri, { useNewUrlParser: true },
-  () => console.log('connected to database')
-)
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}, () => console.log('connected to database'))
 
 app.use(express.static(path.join(__dirname, "client", "build")))
 
@@ -40,13 +43,13 @@ app.use(
 
 app.use(
   '/issues',
-  jwt({ secret: secret, algorithms: ['HS256']}),
+  jwt({ secret: `${process.env.REACT_APP_SECRET}`, algorithms: ['HS256']}),
   require('./routes/protectedIssueRouter.js')
 )
 
 app.use(
   '/comments',
-  jwt({ secret: secret, algorithms: ['HS256']}),
+  jwt({ secret: `${process.env.REACT_APP_SECRET}`, algorithms: ['HS256']}),
   require('./routes/protectedCommentRouter.js')
 )
 
