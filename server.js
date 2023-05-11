@@ -8,12 +8,16 @@ const path = require("path")
 
 // const port = process.env.PORT || 9000;
 
-const secret = process.env.SECRET 
+const secret = process.env.REACT_APP_SECRET 
+
+const pw = process.env.REACT_APP_MONGODB_SECRET
+
+const uri = `mongodb+srv://jacaleca2:${pw}@rtv-render.5rltqvb.mongodb.net/?retryWrites=true&w=majority`
 
 app.use(express.json())
 app.use(morgan('dev'))
 
-mongoose.connect("mongodb://localhost:27017/rtv", 
+mongoose.connect(uri, { useNewUrlParser: true },
   () => console.log('connected to database')
 )
 
