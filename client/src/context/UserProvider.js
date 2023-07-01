@@ -141,11 +141,7 @@ export default function UserProvider(props) {
     userAxios.get(`/comments/${issueId}`)
       // .then(res => setComments(prevState => ({
       //   ...prevState,
-      //   comments: prevState.comments.map(comment => 
-      //     issueId === issue._id ? 
-      //     {...issue, comments: [...res.data]} : 
-      //     issue
-      //   )
+      //   comments: res.data
       // })))
       .then(res => setComments(res.data))
       .catch(err => console.log(err.response.data.errMsg))
@@ -167,7 +163,6 @@ export default function UserProvider(props) {
   function getIssueById(issueId) {
     axios.get(`/issues/${issueId}`)
       .then(res => {
-        console.log(res.data)
         setIssue(res.data)
       })
       .catch(err => console.log(err.response.data.errMsg))
@@ -176,8 +171,7 @@ export default function UserProvider(props) {
   // ADD A COMMENT
   function addComment(newComment, issueId) {
     userAxios.post(`/comments/${issueId}`, newComment)
-      .then(res => { console.log(res.data)
-        setComments(prevComments => ({
+      .then(res => { setComments(prevComments => ({
           comments: [...prevComments, res.data]
       }))})
       .catch(err => console.log(err.response.data.errMsg))

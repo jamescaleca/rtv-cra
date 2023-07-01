@@ -15,7 +15,6 @@ export default function IssueMap(props) {
    } = useContext(UserContext)
   const [editToggle, setEditToggle] = useState(false)
   const { issues } = props
-  console.log(issues)
 
   const { pathname } = useLocation()
 

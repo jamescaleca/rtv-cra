@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import { UserContext } from '../context/UserProvider'
 import { useParams, Link } from 'react-router-dom'
 import Comments from '../components/Comments'
@@ -21,6 +21,8 @@ export default function IssueDetailPage() {
   const [inputs, setInputs] = useState(initInputs)
 
   const { issueId } = useParams()
+
+  const commentRef = useRef()
   
   const { comment } = inputs
 
@@ -29,7 +31,7 @@ export default function IssueDetailPage() {
   useEffect(() => {
     getIssueById(issueId)
     getAllComments(issueId)
-  }, [getIssueById, getAllComments, issueId])
+  }, [issueId])
 
   function handleChange(e) {
     const {name, value} = e.target
@@ -41,7 +43,7 @@ export default function IssueDetailPage() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    addComment(inputs, issueId)
+    addComment({comment: commentRef.current.value}, issueId)
     setInputs(initInputs)
     getAllComments(issueId)
   }
@@ -81,8 +83,7 @@ export default function IssueDetailPage() {
               <p>Leave a comment as <i>{user.username}</i></p>
               <textarea 
                 name='comment'
-                value={comment}
-                onChange={handleChange}
+                ref={commentRef}
                 placeholder='Write your well-informed comments here!'
                 rows={8}
                 required
