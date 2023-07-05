@@ -216,6 +216,7 @@ textarea {
       border: $font-title;
       .icon-button {
         // $button-size: calc($nav-size * 1);
+        color: $font-title;
         width: auto;
         background-color: $main-primary;
         border-radius: 10px;

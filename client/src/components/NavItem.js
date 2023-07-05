@@ -9,9 +9,9 @@ export default function NavItem(props) {
   
   return (
     <li className="nav-item">
-      <a href="/#" className="icon-button" onClick={() => setOpen(!open)}>
+      <button className="icon-button" onClick={() => setOpen(!open)}>
         {username.length > 16 ? `${username.slice(0, 16)}...` : username}{icon}
-      </a>
+      </button>
       {open && props.children}
     </li>
   )
