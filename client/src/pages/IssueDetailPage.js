@@ -31,7 +31,7 @@ export default function IssueDetailPage() {
   useEffect(() => {
     getIssueById(issueId)
     getAllComments(issueId)
-  }, [issueId])
+  })
 
   function handleChange(e) {
     const {name, value} = e.target
