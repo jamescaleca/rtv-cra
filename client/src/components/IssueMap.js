@@ -107,7 +107,13 @@ export default function IssueMap(props) {
           </ul>
           <ul className="edit-delete-btns">
             <li><button onClick={() => toggle()}>Edit</button></li>
-            <li><button onClick={() => deleteIssue(issue._id)}>Delete</button></li>
+            <li>
+              <button 
+                className="delete-button" 
+                onClick={() => deleteIssue(issue._id)}
+              >Delete
+              </button>
+            </li>
           </ul>
         </div>
         {editToggle === true ?

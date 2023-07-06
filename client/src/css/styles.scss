@@ -112,6 +112,20 @@ textarea {
   }
 }
 
+button {
+  background: $dark-tertiary;
+  color: $main-secondary;
+  padding: .3rem;
+  border-radius: 20px;
+  font-size: .8rem;
+  font-weight: bold;
+  width: 7rem;
+}
+
+.delete-button {
+  color: red;
+}
+
 .p-bg {
   color: $font-descr-bg;
 }
@@ -315,15 +329,15 @@ textarea {
       color: $font-descr-bg;
     }
   }
-  button {
-    background: $dark-tertiary;
-    color: $main-secondary;
-    padding: .3rem;
-    border-radius: 20px;
-    font-size: .8rem;
-    font-weight: bold;
-    width: 7rem;
-  }
+  // button {
+  //   background: $dark-tertiary;
+  //   color: $main-secondary;
+  //   padding: .3rem;
+  //   border-radius: 20px;
+  //   font-size: .8rem;
+  //   font-weight: bold;
+  //   width: 7rem;
+  // }
 }
 .issue-list {
   display: flex;

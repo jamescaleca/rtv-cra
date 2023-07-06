@@ -61,6 +61,20 @@ textarea::placeholder {
   color: rgba(255, 255, 255, 0.45);
 }
 
+button {
+  background: #242424;
+  color: #C651CD;
+  padding: 0.3rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  width: 7rem;
+}
+
+.delete-button {
+  color: red;
+}
+
 .p-bg {
   color: rgba(255, 255, 255, 0.45);
 }
@@ -262,15 +276,6 @@ textarea::placeholder {
 }
 .new-post-form input[type=text]::placeholder {
   color: rgba(255, 255, 255, 0.45);
-}
-.new-post-form button {
-  background: #242424;
-  color: #C651CD;
-  padding: 0.3rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  width: 7rem;
 }
 
 .issue-list {
