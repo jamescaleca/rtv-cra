@@ -2,49 +2,46 @@ import React, { useContext, useEffect, useState, useRef } from 'react'
 import { UserContext } from '../context/UserProvider'
 import { useParams, Link } from 'react-router-dom'
 import Comments from '../components/Comments'
+import axios from "axios"
 import '../css/styles.css'
-
-const initInputs = { comment: "" }
 
 export default function IssueDetailPage() {
   const {
-    getAllComments,
-    getIssueById, 
-    issue,
     user, 
     token,
-    comments, 
     addComment,
     timezone
   } = useContext(UserContext)
 
-  const [inputs, setInputs] = useState(initInputs)
+  const [issue, setIssue] = useState(null)
+  const [comments, setComments] = useState([])
 
   const { issueId } = useParams()
 
   const commentRef = useRef()
-  
-  const { comment } = inputs
 
-  // const { title, description, _id, user, username } = props.location.state
+  //GET ISSUE BY ID
+  function getIssueById(issueId) {
+    axios.get(`/issues/${issueId}`)
+      .then(res => setIssue(res.data))
+      .catch(err => console.log(err.response.data.errMsg))
+  }
+
+  //GET ALL COMMENTS ON POST
+  function getAllComments(issueId) {
+    axios.get(`/comments/${issueId}`)
+      .then(res => setComments(res.data))
+      .catch(err => console.log(err.response.data.errMsg))
+  }
 
   useEffect(() => {
     getIssueById(issueId)
     getAllComments(issueId)
-  })
-
-  function handleChange(e) {
-    const {name, value} = e.target
-    setInputs(prevInputs => ({
-      ...prevInputs,
-      [name]: value
-    }))
-  }
+  }, [issueId])
 
   function handleSubmit(e) {
     e.preventDefault()
     addComment({comment: commentRef.current.value}, issueId)
-    setInputs(initInputs)
     getAllComments(issueId)
   }
 

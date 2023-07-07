@@ -138,10 +138,9 @@ export default function UserProvider(props) {
 
   // GET ALL COMMENTS
   function getAllComments(issueId) {
-    userAxios.get(`/comments/${issueId}`)
+    axios.get(`/comments/${issueId}`)
       .then(res => setComments(res.data))
       .catch(err => console.log(err.response.data.errMsg))
-      return
   }
 
   // ADD AN ISSUE
@@ -164,7 +163,6 @@ export default function UserProvider(props) {
         setIssue(res.data)
       })
       .catch(err => console.log(err.response.data.errMsg))
-      return
   }
 
   // ADD A COMMENT
@@ -236,6 +234,11 @@ export default function UserProvider(props) {
       .catch(err => console.log(err))
     return getUserIssues(userState.user._id)
   }
+
+  // function deleteComment(commentId) {
+  //   userAxios.delete(`/comments/${commentId}`)
+  //     .then(res => )
+  // }
 
   // const history = useHistory()
 

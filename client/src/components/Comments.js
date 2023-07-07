@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { UserContext } from '../context/UserProvider'
 
-export default function Comments(props) {
-  const comments = props.comments
+export default function Comments({ comments }) {
+  const { user, token } = useContext(UserContext)
+
+  console.log(user._id)
   return (
     <>
     {comments.length > 0 ?
@@ -11,6 +14,14 @@ export default function Comments(props) {
             <div className="comment">
               <p>{comment.comment}</p>
               <p>Posted by: <i>{comment.username}</i></p>
+              {/* {comment.user === user._id && token ?
+                <button 
+                  className="delete-button"
+
+                  >Delete
+                </button> 
+                : null 
+              } */}
             </div>
             <hr />
           </li>
