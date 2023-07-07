@@ -17,22 +17,22 @@ const uri = `mongodb+srv://jacaleca2:${process.env.REACT_APP_MONGODB_SECRET}@rtv
 app.use(express.json())
 app.use(morgan('dev'))
 
-// mongoose.connect(uri, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useCreateIndex: true,
-//   useFindAndModify: false
-// }, () => console.log('connected to database'))
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}, () => console.log('connected to database'))
 
-mongoose.connect('mongodb://localhost:27017/rtv',
-{
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-},
-() => console.log('Connected to the DB')
-)
+// mongoose.connect('mongodb://localhost:27017/rtv',
+// {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false
+// },
+// () => console.log('Connected to the DB')
+// )
 
 app.use(express.static(path.join(__dirname, "client", "build")))
 
