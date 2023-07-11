@@ -16,6 +16,7 @@ export default function UserProvider(props) {
     user: JSON.parse(localStorage.getItem('user')) || {},
     token: localStorage.getItem('token') || '',
     issues: [],
+    comments: [],
     // currentIssue: {},
     errMsg: ''
   }
