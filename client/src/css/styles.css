@@ -93,19 +93,30 @@ button {
 
 .modal.open,
 .overlay.open {
-  display: block;
+  display: flex;
 }
 
 .modal {
   display: none;
   position: fixed;
-  padding: 0.5rem;
+  padding: 1.5rem;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
   background: #242424;
-  border-radius: 0.25rem;
+  border: 1px solid #474a4d;
+  border-radius: 8px;
   z-index: 10;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal > * {
+  padding: 0.5rem;
+}
+.modal .modal-buttons {
+  display: flex;
 }
 
 .navbar {
@@ -241,6 +252,7 @@ button {
   height: 2rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   border-radius: 8px;
   transition: background 500ms;
   padding: 1rem;
@@ -516,5 +528,8 @@ button {
 @media screen and (min-width: 770px) {
   .navbar .navbar-nav {
     justify-content: space-around;
+  }
+  .modal-buttons {
+    flex-direction: row;
   }
 }/*# sourceMappingURL=styles.css.map */

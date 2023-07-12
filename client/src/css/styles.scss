@@ -144,19 +144,31 @@ button {
 
 .modal.open,
 .overlay.open {
-  display: block;
+  display: flex;
 }
 
 .modal {
   display: none;
   position: fixed;
-  padding: 0.5rem;
+  padding: 1.5rem;
   top: 50%;
   left: 50%;
   translate: -50% -50%;
   background: $dark-tertiary;
-  border-radius: 0.25rem;
+  border: $nav-border;
+  border-radius: $nav-border-radius;
   z-index: 10;
+  text-align: center;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  & > * {
+    padding: .5rem;
+  }
+  .modal-buttons {
+    display: flex;
+  }
 }
 
 .navbar {
@@ -292,6 +304,7 @@ button {
             height: 2rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             border-radius: $nav-border-radius;
             transition: background $nav-speed;
             padding: 1rem;
@@ -602,5 +615,8 @@ button {
     .navbar-nav {
       justify-content: space-around;
     }
+  }
+  .modal-buttons {
+    flex-direction: row;
   }
 }

@@ -132,18 +132,19 @@ export default function IssueMap(props) {
           <div data-modal className="modal">
             <div>Are you sure you want to delete this issue?</div>
             <div>This action cannot be undone.</div>
-            <button 
-              data-close-modal
-              onClick={() => closeModal()}
-            >Actually nevermind
-            </button>
-            <button
-              data-close-modal
-              className="delete-button"
-              onClick={() => deleteIssue(issue._id)}
-            >Yes, delete this issue
-
-            </button>
+            <div className="modal-buttons">
+              <button 
+                data-close-modal
+                onClick={() => closeModal()}
+              >Actually, nevermind
+              </button>
+              <button
+                data-close-modal
+                className="delete-button"
+                onClick={() => deleteIssue(issue._id)}
+              >Yes, delete this issue
+              </button>
+            </div>
           </div>
         </div>
         {editToggle === true ?
