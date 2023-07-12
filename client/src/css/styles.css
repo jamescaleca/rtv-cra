@@ -83,6 +83,31 @@ button {
   font-weight: bold;
 }
 
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+
+.modal.open,
+.overlay.open {
+  display: block;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  padding: 0.5rem;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  background: #242424;
+  border-radius: 0.25rem;
+  z-index: 10;
+}
+
 .navbar {
   color: rgba(255, 255, 255, 0.96);
   display: flex;

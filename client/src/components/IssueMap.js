@@ -19,6 +19,18 @@ export default function IssueMap(props) {
   const { pathname } = useLocation()
 
   function toggle(){setEditToggle(prevToggle => !prevToggle)}
+  
+  const modal = document.querySelector("[data-modal]")
+  const overlay = document.querySelector("[data-overlay]")
+
+  function openModal() {
+    modal.classList.add("open")
+    overlay.classList.add("open")
+  }
+  function closeModal() {
+    modal.classList.remove("open")
+    overlay.classList.remove("open")
+  }
 
   const mapIssues = [].concat(issues)
     .sort((a, b) => b.votesTotal - a.votesTotal)
@@ -109,12 +121,30 @@ export default function IssueMap(props) {
             <li><button onClick={() => toggle()}>Edit</button></li>
             <li>
               <button 
+                data-open-modal
                 className="delete-button" 
-                onClick={() => deleteIssue(issue._id)}
+                onClick={() => openModal()}
               >Delete
               </button>
             </li>
           </ul>
+          <div data-overlay className="overlay"></div>
+          <div data-modal className="modal">
+            <div>Are you sure you want to delete this issue?</div>
+            <div>This action cannot be undone.</div>
+            <button 
+              data-close-modal
+              onClick={() => closeModal()}
+            >Actually nevermind
+            </button>
+            <button
+              data-close-modal
+              className="delete-button"
+              onClick={() => deleteIssue(issue._id)}
+            >Yes, delete this issue
+
+            </button>
+          </div>
         </div>
         {editToggle === true ?
           <IssueForm 
