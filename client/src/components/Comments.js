@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { UserContext } from '../context/UserProvider'
 
 export default function Comments({ comments }) {
-  const { user, token } = useContext(UserContext)
+  const { user } = useContext(UserContext)
 
   console.log(user._id)
   return (
